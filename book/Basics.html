@@ -34,192 +34,7 @@
 
 
 <div class="doc">
-<a id="lab19"></a><h1 class="section">Introduction</h1>
-
-<div class="paragraph"> </div>
-
- The functional style of programming is founded on simple, everyday
-    mathematical intuition: If a procedure or method has no side
-    effects, then (ignoring efficiency) all we need to understand
-    about it is how it maps inputs to outputs -- that is, we can think
-    of it as just a concrete method for computing a mathematical
-    function.  This is one sense of the word "functional" in
-    "functional programming."  The direct connection between programs
-    and simple mathematical objects supports both formal correctness
-    proofs and sound informal reasoning about program behavior.
-
-<div class="paragraph"> </div>
-
-    The other sense in which functional programming is "functional" is
-    that it emphasizes the use of functions as <i>first-class</i> values --
-    i.e., values that can be passed as arguments to other functions,
-    returned as results, included in data structures, etc.  The
-    recognition that functions can be treated as data gives rise to a
-    host of useful and powerful programming idioms.
-
-<div class="paragraph"> </div>
-
-    Other common features of functional languages include <i>algebraic
-    data types</i> and <i>pattern matching</i>, which make it easy to
-    construct and manipulate rich data structures, and <i>polymorphic
-    type systems</i> supporting abstraction and code reuse.  Coq offers
-    all of these features.
-
-<div class="paragraph"> </div>
-
-    The first half of this chapter introduces the most essential
-    elements of Coq's native functional programming language, called
-    <i>Gallina</i>.  The second half introduces some basic <i>tactics</i> that
-    can be used to prove properties of Gallina programs. 
-</div>
-
-<div class="doc">
-<a id="lab20"></a><h1 class="section">Data and Functions</h1>
-
-<div class="paragraph"> </div>
-
-<a id="lab21"></a><h2 class="section">Enumerated Types</h2>
-
-<div class="paragraph"> </div>
-
- One notable aspect of Coq is that its set of built-in
-    features is <i>extremely</i> small.  For example, instead of providing
-    the usual palette of atomic data types (booleans, integers,
-    strings, etc.), Coq offers a powerful mechanism for defining new
-    data types from scratch, with all these familiar types as
-    instances.
-
-<div class="paragraph"> </div>
-
-    Naturally, the Coq distribution comes with an extensive standard
-    library providing definitions of booleans, numbers, and many
-    common data structures like lists and hash tables.  But there is
-    nothing magic or primitive about these library definitions.  To
-    illustrate this, in this course we will explicitly recapitulate
-    (almost) all the definitions we need, rather than getting them
-    from the standard library. 
-</div>
-
-<div class="doc">
-<a id="lab22"></a><h2 class="section">Days of the Week</h2>
-
-<div class="paragraph"> </div>
-
- To see how this definition mechanism works, let's start with
-    a very simple example.  The following declaration tells Coq that
-    we are defining a set of data values -- a <i>type</i>. 
-</div>
-<div class="code">
-
-<span class="id" title="keyword">Inductive</span> <a id="day" class="idref" href="#day"><span class="id" title="inductive">day</span></a> : <span class="id" title="keyword">Type</span> :=<br/>
-&nbsp;&nbsp;| <a id="monday" class="idref" href="#monday"><span class="id" title="constructor">monday</span></a><br/>
-&nbsp;&nbsp;| <a id="tuesday" class="idref" href="#tuesday"><span class="id" title="constructor">tuesday</span></a><br/>
-&nbsp;&nbsp;| <a id="wednesday" class="idref" href="#wednesday"><span class="id" title="constructor">wednesday</span></a><br/>
-&nbsp;&nbsp;| <a id="thursday" class="idref" href="#thursday"><span class="id" title="constructor">thursday</span></a><br/>
-&nbsp;&nbsp;| <a id="friday" class="idref" href="#friday"><span class="id" title="constructor">friday</span></a><br/>
-&nbsp;&nbsp;| <a id="saturday" class="idref" href="#saturday"><span class="id" title="constructor">saturday</span></a><br/>
-&nbsp;&nbsp;| <a id="sunday" class="idref" href="#sunday"><span class="id" title="constructor">sunday</span></a>.<br/>
-</div>
-
-<div class="doc">
-The new type is called <span class="inlinecode"><span class="id" title="var">day</span></span>, and its members are <span class="inlinecode"><span class="id" title="var">monday</span></span>,
-    <span class="inlinecode"><span class="id" title="var">tuesday</span></span>, etc.
-
-<div class="paragraph"> </div>
-
-    Having defined <span class="inlinecode"><span class="id" title="var">day</span></span>, we can write functions that operate on
-    days. 
-</div>
-<div class="code">
-
-<span class="id" title="keyword">Definition</span> <a id="next_weekday" class="idref" href="#next_weekday"><span class="id" title="definition">next_weekday</span></a> (<a id="d:3" class="idref" href="#d:3"><span class="id" title="binder">d</span></a>:<a class="idref" href="Basics.html#day"><span class="id" title="inductive">day</span></a>) : <a class="idref" href="Basics.html#day"><span class="id" title="inductive">day</span></a> :=<br/>
-&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="Basics.html#d:3"><span class="id" title="variable">d</span></a> <span class="id" title="keyword">with</span><br/>
-&nbsp;&nbsp;| <a class="idref" href="Basics.html#monday"><span class="id" title="constructor">monday</span></a>    ⇒ <a class="idref" href="Basics.html#tuesday"><span class="id" title="constructor">tuesday</span></a><br/>
-&nbsp;&nbsp;| <a class="idref" href="Basics.html#tuesday"><span class="id" title="constructor">tuesday</span></a>   ⇒ <a class="idref" href="Basics.html#wednesday"><span class="id" title="constructor">wednesday</span></a><br/>
-&nbsp;&nbsp;| <a class="idref" href="Basics.html#wednesday"><span class="id" title="constructor">wednesday</span></a> ⇒ <a class="idref" href="Basics.html#thursday"><span class="id" title="constructor">thursday</span></a><br/>
-&nbsp;&nbsp;| <a class="idref" href="Basics.html#thursday"><span class="id" title="constructor">thursday</span></a>  ⇒ <a class="idref" href="Basics.html#friday"><span class="id" title="constructor">friday</span></a><br/>
-&nbsp;&nbsp;| <a class="idref" href="Basics.html#friday"><span class="id" title="constructor">friday</span></a>    ⇒ <a class="idref" href="Basics.html#monday"><span class="id" title="constructor">monday</span></a><br/>
-&nbsp;&nbsp;| <a class="idref" href="Basics.html#saturday"><span class="id" title="constructor">saturday</span></a>  ⇒ <a class="idref" href="Basics.html#monday"><span class="id" title="constructor">monday</span></a><br/>
-&nbsp;&nbsp;| <a class="idref" href="Basics.html#sunday"><span class="id" title="constructor">sunday</span></a>    ⇒ <a class="idref" href="Basics.html#monday"><span class="id" title="constructor">monday</span></a><br/>
-&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
-</div>
-
-<div class="doc">
-One point to note is that the argument and return types of
-    this function are explicitly declared.  Like most functional
-    programming languages, Coq can often figure out these types for
-    itself when they are not given explicitly -- i.e., it can do <i>type
-    inference</i> -- but we'll generally include them to make reading
-    easier. 
-<div class="paragraph"> </div>
-
- Having defined a function, we should next check that it
-    works on some examples.  There are actually three different ways
-    to do the examples in Coq.  First, we can use the command
-    <span class="inlinecode"><span class="id" title="keyword">Compute</span></span> to evaluate a compound expression involving
-    <span class="inlinecode"><span class="id" title="var">next_weekday</span></span>. 
-</div>
-<div class="code">
-
-<span class="id" title="keyword">Compute</span> (<a class="idref" href="Basics.html#next_weekday"><span class="id" title="definition">next_weekday</span></a> <a class="idref" href="Basics.html#friday"><span class="id" title="constructor">friday</span></a>).<br/>
-<span class="comment">(*&nbsp;==&gt;&nbsp;monday&nbsp;:&nbsp;day&nbsp;*)</span><br/><hr class='doublespaceincode'/>
-<span class="id" title="keyword">Compute</span> (<a class="idref" href="Basics.html#next_weekday"><span class="id" title="definition">next_weekday</span></a> (<a class="idref" href="Basics.html#next_weekday"><span class="id" title="definition">next_weekday</span></a> <a class="idref" href="Basics.html#saturday"><span class="id" title="constructor">saturday</span></a>)).<br/>
-<span class="comment">(*&nbsp;==&gt;&nbsp;tuesday&nbsp;:&nbsp;day&nbsp;*)</span><br/>
-</div>
-
-<div class="doc">
-(We show Coq's responses in comments, but, if you have a
-    computer handy, this would be an excellent moment to fire up the
-    Coq interpreter under your favorite IDE -- either CoqIde or Proof
-    General -- and try it for yourself.  Load this file, <span class="inlinecode"><span class="id" title="var">Basics.v</span></span>,
-    from the book's Coq sources, find the above example, submit it to
-    Coq, and observe the result.) 
-<div class="paragraph"> </div>
-
- Second, we can record what we <i>expect</i> the result to be in the
-    form of a Coq example: 
-</div>
-<div class="code">
-
-<span class="id" title="keyword">Example</span> <a id="test_next_weekday" class="idref" href="#test_next_weekday"><span class="id" title="definition">test_next_weekday</span></a>:<br/>
-&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/library//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">(</span></a><a class="idref" href="Basics.html#next_weekday"><span class="id" title="definition">next_weekday</span></a> (<a class="idref" href="Basics.html#next_weekday"><span class="id" title="definition">next_weekday</span></a> <a class="idref" href="Basics.html#saturday"><span class="id" title="constructor">saturday</span></a>)<a class="idref" href="http://coq.inria.fr/library//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">)</span></a> <a class="idref" href="http://coq.inria.fr/library//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="Basics.html#tuesday"><span class="id" title="constructor">tuesday</span></a>.<br/>
-</div>
-
-<div class="doc">
-This declaration does two things: it makes an
-    assertion (that the second weekday after <span class="inlinecode"><span class="id" title="var">saturday</span></span> is <span class="inlinecode"><span class="id" title="var">tuesday</span></span>),
-    and it gives the assertion a name that can be used to refer to it
-    later.  Having made the assertion, we can also ask Coq to verify
-    it like this: 
-</div>
-<div class="code">
-
-<span class="id" title="keyword">Proof</span>. <span class="id" title="tactic">simpl</span>. <span class="id" title="tactic">reflexivity</span>. <span class="id" title="keyword">Qed</span>.<br/>
-</div>
-
-<div class="doc">
-The details are not important just now, but essentially this
-    can be read as "The assertion we've just made can be proved by
-    observing that both sides of the equality evaluate to the same
-    thing."
-
-<div class="paragraph"> </div>
-
-    Third, we can ask Coq to <i>extract</i>, from our <span class="inlinecode"><span class="id" title="keyword">Definition</span></span>, a
-    program in another, more conventional, programming
-    language (OCaml, Scheme, or Haskell) with a high-performance
-    compiler.  This facility is very interesting, since it gives us a
-    path from proved-correct algorithms written in Gallina to
-    efficient machine code.  (Of course, we are trusting the
-    correctness of the OCaml/Haskell/Scheme compiler, and of Coq's
-    extraction facility itself, but this is still a big step forward
-    from the way most software is developed today.) Indeed, this is
-    one of the main uses for which Coq was developed.  We'll come back
-    to this topic in later chapters. 
-</div>
-
-<div class="doc">
-<a id="lab23"></a><h2 class="section">Homework Submission Guidelines</h2>
+<a id="lab19"></a><h1 class="section">Homework Submission Guidelines</h1>
 
 <div class="paragraph"> </div>
 
@@ -267,29 +82,305 @@ The details are not important just now, but essentially this
 <br/>
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">coqc</span> -<span class="id" title="var">Q</span> . <span class="id" title="var">LF</span> <span class="id" title="var">Basics.v</span><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">coqc</span> -<span class="id" title="var">Q</span> . <span class="id" title="var">LF</span> <span class="id" title="var">BasicsTest.v</span>
-</span>    See the end of this chapter for more information about how to interpret
+</span>    See the next section for more information about how to interpret
     the output of test scripts.
 
 <div class="paragraph"> </div>
 
-    There is no need to hand in <span class="inlinecode"><span class="id" title="var">BasicsTest.v</span></span> itself (or <span class="inlinecode"><span class="id" title="var">Preface.v</span></span>).
+    There is no need to hand in <span class="inlinecode"><span class="id" title="var">BasicsTest.v</span></span> itself (or <span class="inlinecode"><span class="id" title="var">Preface.v</span></span>). 
+</div>
+
+<div class="doc">
+<a id="lab20"></a><h1 class="section">Testing Your Solutions</h1>
 
 <div class="paragraph"> </div>
 
-    If your class is using the Canvas system to hand in assignments...
+ Each SF chapter comes with a test file containing scripts that
+    check whether you have solved the required exercises. If you're
+    using SF as part of a course, your instructors will likely be
+    running these test files to autograde your solutions. You can also
+    use these test files, if you like, to make sure you haven't missed
+    anything.
+
+<div class="paragraph"> </div>
+
+    Important: This step is <i>optional</i>: if you've completed all the
+    non-optional exercises and Coq accepts your answers, this already
+    shows that you are in good shape.
+
+<div class="paragraph"> </div>
+
+    The test file for this chapter is <span class="inlinecode"><span class="id" title="var">BasicsTest.v</span></span>. To run it, make
+    sure you have saved <span class="inlinecode"><span class="id" title="var">Basics.v</span></span> to disk.  Then do this:
+<br/>
+<span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">coqc</span> -<span class="id" title="var">Q</span> . <span class="id" title="var">LF</span> <span class="id" title="var">Basics.v</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">coqc</span> -<span class="id" title="var">Q</span> . <span class="id" title="var">LF</span> <span class="id" title="var">BasicsTest.v</span>
+</span>    (Make sure you do this in a directory that also contains a file named
+    <span class="inlinecode"><span class="id" title="var">_CoqProject</span></span> containing the single line <span class="inlinecode">-<span class="id" title="var">Q</span></span> <span class="inlinecode">.</span> <span class="inlinecode"><span class="id" title="var">LF</span></span>.)
+
+<div class="paragraph"> </div>
+
+    If you accidentally deleted an exercise or changed its name, then
+    <span class="inlinecode"><span class="id" title="var">make</span></span> <span class="inlinecode"><span class="id" title="var">BasicsTest.vo</span></span> will fail with an error that tells you the
+    name of the missing exercise.  Otherwise, you will get a lot of
+    useful output:
+
+<div class="paragraph"> </div>
+
 <ul class="doclist">
-<li> If you submit multiple versions of the assignment, you may
-        notice that they are given different names.  This is fine: The
-        most recent submission is the one that will be graded.
+<li> First will be all the output produced by <span class="inlinecode"><span class="id" title="var">Basics.v</span></span> itself.  At
+      the end of that you will see <span class="inlinecode"><span class="id" title="var">COQC</span></span> <span class="inlinecode"><span class="id" title="var">BasicsTest.v</span></span>.
+
+<div class="paragraph"> </div>
+
 
 </li>
-<li> To hand in multiple files at the same time (if more than one
-        chapter is assigned in the same week), you need to make a
-        single submission with all the files at once using the button
-        "Add another file" just above the comment box. 
+<li> Second, for each required exercise, there is a report that tells
+      you its point value (the number of stars or some fraction
+      thereof if there are multiple parts to the exercise), whether
+      its type is ok, and what assumptions it relies upon.
+
+<div class="paragraph"> </div>
+
+      If the <i>type</i> is not <span class="inlinecode"><span class="id" title="var">ok</span></span>, it means you proved the wrong thing:
+      most likely, you accidentally modified the theorem statement
+      while you were proving it.  The autograder won't give you any
+      points for that, so make sure to correct the theorem.
+
+<div class="paragraph"> </div>
+
+      The <i>assumptions</i> are any unproved theorems which your solution
+      relies upon.  "Closed under the global context" is a fancy way
+      of saying "none": you have solved the exercise. (Hooray!)  On
+      the other hand, a list of axioms means you haven't fully solved
+      the exercise. (But see below regarding "Allowed Axioms.") If the
+      exercise name itself is in the list, that means you haven't
+      solved it; probably you have <span class="inlinecode"><span class="id" title="var">Admitted</span></span> it.
+
+<div class="paragraph"> </div>
+
+
+</li>
+<li> Third, you will see the maximum number of points in standard and
+      advanced versions of the assignment.  That number is based on
+      the number of stars in the non-optional exercises.
+
+<div class="paragraph"> </div>
+
+
+</li>
+<li> Fourth, you will see a list of "Allowed Axioms".  These are
+      unproved theorems that your solution is permitted to depend
+      upon.  You'll probably see something about
+      <span class="inlinecode"><span class="id" title="var">functional_extensionality</span></span> for this chapter; we'll cover what
+      that means in a later chapter.
+
+<div class="paragraph"> </div>
+
+
+</li>
+<li> Finally, you will see a summary of whether you have solved each
+      exercise.  Note that summary does not include the critical
+      information of whether the type is ok (that is, whether you
+      accidentally changed the theorem statement): you have to look
+      above for that information.
+
 </li>
 </ul>
 
+<div class="paragraph"> </div>
+
+    Exercises that are manually graded will also show up in the
+    output.  But since they have to be graded by a human, the test
+    script won't be able to tell you much about them.  
+</div>
+
+<div class="doc">
+<a id="lab21"></a><h1 class="section">Introduction</h1>
+
+<div class="paragraph"> </div>
+
+ The functional style of programming is founded on simple, everyday
+    mathematical intuition: If a procedure or method has no side
+    effects, then (ignoring efficiency) all we need to understand
+    about it is how it maps inputs to outputs -- that is, we can think
+    of it as just a concrete method for computing a mathematical
+    function.  This is one sense of the word "functional" in
+    "functional programming."  The direct connection between programs
+    and simple mathematical objects supports both formal correctness
+    proofs and sound informal reasoning about program behavior.
+
+<div class="paragraph"> </div>
+
+    The other sense in which functional programming is "functional" is
+    that it emphasizes the use of functions as <i>first-class</i> values --
+    i.e., values that can be passed as arguments to other functions,
+    returned as results, included in data structures, etc.  The
+    recognition that functions can be treated as data gives rise to a
+    host of useful and powerful programming idioms.
+
+<div class="paragraph"> </div>
+
+    Other common features of functional languages include <i>algebraic
+    data types</i> and <i>pattern matching</i>, which make it easy to
+    construct and manipulate rich data structures, and <i>polymorphic
+    type systems</i> supporting abstraction and code reuse.  Coq offers
+    all of these features.
+
+<div class="paragraph"> </div>
+
+    The first half of this chapter introduces the most essential
+    elements of Coq's native functional programming language, called
+    <i>Gallina</i>.  The second half introduces some basic <i>tactics</i> that
+    can be used to prove properties of Gallina programs. 
+</div>
+
+<div class="doc">
+<a id="lab22"></a><h1 class="section">Data and Functions</h1>
+
+<div class="paragraph"> </div>
+
+<a id="lab23"></a><h2 class="section">Enumerated Types</h2>
+
+<div class="paragraph"> </div>
+
+ One notable aspect of Coq is that its set of built-in
+    features is <i>extremely</i> small.  For example, instead of providing
+    the usual palette of atomic data types (booleans, integers,
+    strings, etc.), Coq offers a powerful mechanism for defining new
+    data types from scratch, with all these familiar types as
+    instances.
+
+<div class="paragraph"> </div>
+
+    Naturally, the Coq distribution comes with an extensive standard
+    library providing definitions of booleans, numbers, and many
+    common data structures like lists and hash tables.  But there is
+    nothing magic or primitive about these library definitions.  To
+    illustrate this, in this course we will explicitly recapitulate
+    (almost) all the definitions we need, rather than getting them
+    from the standard library. 
+</div>
+
+<div class="doc">
+<a id="lab24"></a><h2 class="section">Days of the Week</h2>
+
+<div class="paragraph"> </div>
+
+ To see how this definition mechanism works, let's start with
+    a very simple example.  The following declaration tells Coq that
+    we are defining a set of data values -- a <i>type</i>. 
+</div>
+<div class="code">
+
+<span class="id" title="keyword">Inductive</span> <a id="day" class="idref" href="#day"><span class="id" title="inductive">day</span></a> : <span class="id" title="keyword">Type</span> :=<br/>
+&nbsp;&nbsp;| <a id="monday" class="idref" href="#monday"><span class="id" title="constructor">monday</span></a><br/>
+&nbsp;&nbsp;| <a id="tuesday" class="idref" href="#tuesday"><span class="id" title="constructor">tuesday</span></a><br/>
+&nbsp;&nbsp;| <a id="wednesday" class="idref" href="#wednesday"><span class="id" title="constructor">wednesday</span></a><br/>
+&nbsp;&nbsp;| <a id="thursday" class="idref" href="#thursday"><span class="id" title="constructor">thursday</span></a><br/>
+&nbsp;&nbsp;| <a id="friday" class="idref" href="#friday"><span class="id" title="constructor">friday</span></a><br/>
+&nbsp;&nbsp;| <a id="saturday" class="idref" href="#saturday"><span class="id" title="constructor">saturday</span></a><br/>
+&nbsp;&nbsp;| <a id="sunday" class="idref" href="#sunday"><span class="id" title="constructor">sunday</span></a>.<br/>
+</div>
+
+<div class="doc">
+The new type is called <span class="inlinecode"><span class="id" title="var">day</span></span>, and its members are <span class="inlinecode"><span class="id" title="var">monday</span></span>,
+    <span class="inlinecode"><span class="id" title="var">tuesday</span></span>, etc.
+
+<div class="paragraph"> </div>
+
+    Having defined <span class="inlinecode"><span class="id" title="var">day</span></span>, we can write functions that operate on
+    days. 
+</div>
+<div class="code">
+
+<span class="id" title="keyword">Definition</span> <a id="next_weekday" class="idref" href="#next_weekday"><span class="id" title="definition">next_weekday</span></a> (<a id="d:3" class="idref" href="#d:3"><span class="id" title="binder">d</span></a>:<a class="idref" href="Basics.html#day"><span class="id" title="inductive">day</span></a>) : <a class="idref" href="Basics.html#day"><span class="id" title="inductive">day</span></a> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="Basics.html#d:3"><span class="id" title="variable">d</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| <a class="idref" href="Basics.html#monday"><span class="id" title="constructor">monday</span></a>    ⇒ <a class="idref" href="Basics.html#tuesday"><span class="id" title="constructor">tuesday</span></a><br/>
+&nbsp;&nbsp;| <a class="idref" href="Basics.html#tuesday"><span class="id" title="constructor">tuesday</span></a>   ⇒ <a class="idref" href="Basics.html#wednesday"><span class="id" title="constructor">wednesday</span></a><br/>
+&nbsp;&nbsp;| <a class="idref" href="Basics.html#wednesday"><span class="id" title="constructor">wednesday</span></a> ⇒ <a class="idref" href="Basics.html#thursday"><span class="id" title="constructor">thursday</span></a><br/>
+&nbsp;&nbsp;| <a class="idref" href="Basics.html#thursday"><span class="id" title="constructor">thursday</span></a>  ⇒ <a class="idref" href="Basics.html#friday"><span class="id" title="constructor">friday</span></a><br/>
+&nbsp;&nbsp;| <a class="idref" href="Basics.html#friday"><span class="id" title="constructor">friday</span></a>    ⇒ <a class="idref" href="Basics.html#monday"><span class="id" title="constructor">monday</span></a><br/>
+&nbsp;&nbsp;| <a class="idref" href="Basics.html#saturday"><span class="id" title="constructor">saturday</span></a>  ⇒ <a class="idref" href="Basics.html#monday"><span class="id" title="constructor">monday</span></a><br/>
+&nbsp;&nbsp;| <a class="idref" href="Basics.html#sunday"><span class="id" title="constructor">sunday</span></a>    ⇒ <a class="idref" href="Basics.html#monday"><span class="id" title="constructor">monday</span></a><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/><hr class='doublespaceincode'/>
+<span class="comment">(*&nbsp;HIDE&nbsp;CH:&nbsp;I&nbsp;think&nbsp;next_working_day&nbsp;would&nbsp;be&nbsp;a&nbsp;better&nbsp;name&nbsp;for&nbsp;this<br/>
+&nbsp;&nbsp;&nbsp;function.&nbsp;At&nbsp;least&nbsp;non-native&nbsp;speakers&nbsp;like&nbsp;me&nbsp;often&nbsp;take&nbsp;some<br/>
+&nbsp;&nbsp;&nbsp;moments&nbsp;to&nbsp;understand&nbsp;why&nbsp;next_weekday&nbsp;friday&nbsp;is&nbsp;not&nbsp;saturday&nbsp;*)</span><br/>
+</div>
+
+<div class="doc">
+One point to note is that the argument and return types of
+    this function are explicitly declared.  Like most functional
+    programming languages, Coq can often figure out these types for
+    itself when they are not given explicitly -- i.e., it can do <i>type
+    inference</i> -- but we'll generally include them to make reading
+    easier. 
+<div class="paragraph"> </div>
+
+ Having defined a function, we should next check that it
+    works on some examples.  There are actually three different ways
+    to do the examples in Coq.  First, we can use the command
+    <span class="inlinecode"><span class="id" title="keyword">Compute</span></span> to evaluate a compound expression involving
+    <span class="inlinecode"><span class="id" title="var">next_weekday</span></span>. 
+</div>
+<div class="code">
+
+<span class="id" title="keyword">Compute</span> (<a class="idref" href="Basics.html#next_weekday"><span class="id" title="definition">next_weekday</span></a> <a class="idref" href="Basics.html#friday"><span class="id" title="constructor">friday</span></a>).<br/>
+<span class="comment">(*&nbsp;==&gt;&nbsp;monday&nbsp;:&nbsp;day&nbsp;*)</span><br/><hr class='doublespaceincode'/>
+<span class="id" title="keyword">Compute</span> (<a class="idref" href="Basics.html#next_weekday"><span class="id" title="definition">next_weekday</span></a> (<a class="idref" href="Basics.html#next_weekday"><span class="id" title="definition">next_weekday</span></a> <a class="idref" href="Basics.html#saturday"><span class="id" title="constructor">saturday</span></a>)).<br/>
+<span class="comment">(*&nbsp;==&gt;&nbsp;tuesday&nbsp;:&nbsp;day&nbsp;*)</span><br/>
+</div>
+
+<div class="doc">
+(We show Coq's responses in comments, but, if you have a
+    computer handy, this would be an excellent moment to fire up the
+    Coq interpreter under your favorite IDE -- CoqIDE, Proof General,
+    or VSCoq -- and try it for yourself.  Load this file, <span class="inlinecode"><span class="id" title="var">Basics.v</span></span>,
+    from the book's Coq sources, find the above example, submit it to
+    Coq, and observe the result.) 
+<div class="paragraph"> </div>
+
+ Second, we can record what we <i>expect</i> the result to be in the
+    form of a Coq example: 
+</div>
+<div class="code">
+
+<span class="id" title="keyword">Example</span> <a id="test_next_weekday" class="idref" href="#test_next_weekday"><span class="id" title="definition">test_next_weekday</span></a>:<br/>
+&nbsp;&nbsp;<a class="idref" href="http://coq.inria.fr/library//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">(</span></a><a class="idref" href="Basics.html#next_weekday"><span class="id" title="definition">next_weekday</span></a> (<a class="idref" href="Basics.html#next_weekday"><span class="id" title="definition">next_weekday</span></a> <a class="idref" href="Basics.html#saturday"><span class="id" title="constructor">saturday</span></a>)<a class="idref" href="http://coq.inria.fr/library//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">)</span></a> <a class="idref" href="http://coq.inria.fr/library//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="Basics.html#tuesday"><span class="id" title="constructor">tuesday</span></a>.<br/>
+</div>
+
+<div class="doc">
+This declaration does two things: it makes an
+    assertion (that the second weekday after <span class="inlinecode"><span class="id" title="var">saturday</span></span> is <span class="inlinecode"><span class="id" title="var">tuesday</span></span>),
+    and it gives the assertion a name that can be used to refer to it
+    later.  Having made the assertion, we can also ask Coq to verify
+    it like this: 
+</div>
+<div class="code">
+
+<span class="id" title="keyword">Proof</span>. <span class="id" title="tactic">simpl</span>. <span class="id" title="tactic">reflexivity</span>. <span class="id" title="keyword">Qed</span>.<br/>
+</div>
+
+<div class="doc">
+The details are not important just now, but essentially this
+    can be read as "The assertion we've just made can be proved by
+    observing that both sides of the equality evaluate to the same
+    thing."
+
+<div class="paragraph"> </div>
+
+    Third, we can ask Coq to <i>extract</i>, from our <span class="inlinecode"><span class="id" title="keyword">Definition</span></span>, a
+    program in another, more conventional, programming
+    language (OCaml, Scheme, or Haskell) with a high-performance
+    compiler.  This facility is very interesting, since it gives us a
+    path from proved-correct algorithms written in Gallina to
+    efficient machine code.  (Of course, we are trusting the
+    correctness of the OCaml/Haskell/Scheme compiler, and of Coq's
+    extraction facility itself, but this is still a big step forward
+    from the way most software is developed today.) Indeed, this is
+    one of the main uses for which Coq was developed.  We'll come back
+    to this topic in later chapters. 
 <div class="paragraph"> </div>
 
  The <span class="inlinecode"><span class="id" title="keyword">Require</span></span> <span class="inlinecode"><span class="id" title="keyword">Export</span></span> statement on the next line tells Coq to use
@@ -302,7 +393,7 @@ The details are not important just now, but essentially this
 </div>
 
 <div class="doc">
-<a id="lab24"></a><h2 class="section">Booleans</h2>
+<a id="lab25"></a><h2 class="section">Booleans</h2>
 
 <div class="paragraph"> </div>
 
@@ -415,7 +506,7 @@ Coq's conditionals are exactly like those found in any other
     and false if it evaluates to the second. 
 <div class="paragraph"> </div>
 
-<a id="lab25"></a><h4 class="section">Exercise: 1 star, standard (nandb)</h4>
+<a id="lab26"></a><h4 class="section">Exercise: 1 star, standard (nandb)</h4>
  The command <span class="inlinecode"><span class="id" title="var">Admitted</span></span> can be used as a placeholder for an
     incomplete proof.  We use it in exercises to indicate the parts
     that we're leaving for you -- i.e., your job is to replace
@@ -456,7 +547,7 @@ Coq's conditionals are exactly like those found in any other
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab26"></a><h4 class="section">Exercise: 1 star, standard (andb3)</h4>
+<a id="lab27"></a><h4 class="section">Exercise: 1 star, standard (andb3)</h4>
  Do the same for the <span class="inlinecode"><span class="id" title="var">andb3</span></span> function below. This function should
     return <span class="inlinecode"><span class="id" title="var">true</span></span> when all of its inputs are <span class="inlinecode"><span class="id" title="var">true</span></span>, and <span class="inlinecode"><span class="id" title="var">false</span></span>
     otherwise. 
@@ -478,7 +569,7 @@ Coq's conditionals are exactly like those found in any other
 
 
 <div class="doc">
-<a id="lab27"></a><h2 class="section">Types</h2>
+<a id="lab28"></a><h2 class="section">Types</h2>
 
 <div class="paragraph"> </div>
 
@@ -526,7 +617,7 @@ The type of <span class="inlinecode"><span class="id" title="var">negb</span></s
 </div>
 
 <div class="doc">
-<a id="lab28"></a><h2 class="section">New Types from Old</h2>
+<a id="lab29"></a><h2 class="section">New Types from Old</h2>
 
 <div class="paragraph"> </div>
 
@@ -672,7 +763,7 @@ The pattern "<span class="inlinecode"><span class="id" title="var">primary</span
 </div>
 
 <div class="doc">
-<a id="lab29"></a><h2 class="section">Modules</h2>
+<a id="lab30"></a><h2 class="section">Modules</h2>
 
 <div class="paragraph"> </div>
 
@@ -696,7 +787,7 @@ The pattern "<span class="inlinecode"><span class="id" title="var">primary</span
 </div>
 
 <div class="doc">
-<a id="lab30"></a><h2 class="section">Tuples</h2>
+<a id="lab31"></a><h2 class="section">Tuples</h2>
 
 </div>
 <div class="code">
@@ -746,7 +837,7 @@ The <span class="inlinecode"><span class="id" title="var">bits</span></span> con
 </div>
 
 <div class="doc">
-<a id="lab31"></a><h2 class="section">Numbers</h2>
+<a id="lab32"></a><h2 class="section">Numbers</h2>
 
 <div class="paragraph"> </div>
 
@@ -1075,7 +1166,7 @@ You can match two expressions at once by putting a comma
 </div>
 
 <div class="doc">
-<a id="lab32"></a><h4 class="section">Exercise: 1 star, standard (factorial)</h4>
+<a id="lab33"></a><h4 class="section">Exercise: 1 star, standard (factorial)</h4>
  Recall the standard mathematical factorial function:
 <pre>
        factorial(0)  =  1
@@ -1203,7 +1294,7 @@ We now have two symbols that look like equality: <span class="inlinecode">=</spa
     value (either <span class="inlinecode"><span class="id" title="var">true</span></span> or <span class="inlinecode"><span class="id" title="var">false</span></span>) we can compute. 
 <div class="paragraph"> </div>
 
-<a id="lab33"></a><h4 class="section">Exercise: 1 star, standard (ltb)</h4>
+<a id="lab34"></a><h4 class="section">Exercise: 1 star, standard (ltb)</h4>
  The <span class="inlinecode"><span class="id" title="var">ltb</span></span> function tests natural numbers for <span class="inlinecode"><span class="id" title="var">l</span></span>ess-<span class="inlinecode"><span class="id" title="var">t</span></span>han,
     yielding a <span class="inlinecode"><span class="id" title="var">b</span></span>oolean.  Instead of making up a new <span class="inlinecode"><span class="id" title="keyword">Fixpoint</span></span> for
     this one, define it in terms of a previously defined
@@ -1226,7 +1317,7 @@ We now have two symbols that look like equality: <span class="inlinecode">=</spa
 
 
 <div class="doc">
-<a id="lab34"></a><h1 class="section">Proof by Simplification</h1>
+<a id="lab35"></a><h1 class="section">Proof by Simplification</h1>
 
 <div class="paragraph"> </div>
 
@@ -1355,7 +1446,7 @@ The <span class="inlinecode"><span class="id" title="var">_l</span></span> suffi
 </div>
 
 <div class="doc">
-<a id="lab35"></a><h1 class="section">Proof by Rewriting</h1>
+<a id="lab36"></a><h1 class="section">Proof by Rewriting</h1>
 
 <div class="paragraph"> </div>
 
@@ -1420,7 +1511,7 @@ The first line of the proof moves the universally quantified
     what difference it makes.) 
 <div class="paragraph"> </div>
 
-<a id="lab36"></a><h4 class="section">Exercise: 1 star, standard (plus_id_exercise)</h4>
+<a id="lab37"></a><h4 class="section">Exercise: 1 star, standard (plus_id_exercise)</h4>
  Remove "<span class="inlinecode"><span class="id" title="var">Admitted</span>.</span>" and fill in the proof. 
 </div>
 <div class="code">
@@ -1480,7 +1571,7 @@ We can use the <span class="inlinecode"><span class="id" title="tactic">rewrite<
 </div>
 
 <div class="doc">
-<a id="lab37"></a><h4 class="section">Exercise: 1 star, standard (mult_n_1)</h4>
+<a id="lab38"></a><h4 class="section">Exercise: 1 star, standard (mult_n_1)</h4>
  Use those two lemmas about multiplication that we just checked to
     prove the following theorem.  Hint: recall that <span class="inlinecode">1</span> is <span class="inlinecode"><span class="id" title="var">S</span></span> <span class="inlinecode"><span class="id" title="var">O</span></span>. 
 </div>
@@ -1495,7 +1586,7 @@ We can use the <span class="inlinecode"><span class="id" title="tactic">rewrite<
 
 
 <div class="doc">
-<a id="lab38"></a><h1 class="section">Proof by Case Analysis</h1>
+<a id="lab39"></a><h1 class="section">Proof by Case Analysis</h1>
 
 <div class="paragraph"> </div>
 
@@ -1720,7 +1811,7 @@ Since curly braces mark both the beginning and the end of a proof,
 </div>
 
 <div class="doc">
-<a id="lab39"></a><h4 class="section">Exercise: 2 stars, standard (andb_true_elim2)</h4>
+<a id="lab40"></a><h4 class="section">Exercise: 2 stars, standard (andb_true_elim2)</h4>
  Prove the following claim, marking cases (and subcases) with
     bullets when you use <span class="inlinecode"><span class="id" title="tactic">destruct</span></span>.
 
@@ -1788,7 +1879,7 @@ If there are no constructor arguments that need names, we can just
 </div>
 
 <div class="doc">
-<a id="lab40"></a><h4 class="section">Exercise: 1 star, standard (zero_nbeq_plus_1)</h4>
+<a id="lab41"></a><h4 class="section">Exercise: 1 star, standard (zero_nbeq_plus_1)</h4>
 
 </div>
 <div class="code">
@@ -1801,7 +1892,7 @@ If there are no constructor arguments that need names, we can just
 
 
 <div class="doc">
-<a id="lab41"></a><h2 class="section">More on Notation (Optional)</h2>
+<a id="lab42"></a><h2 class="section">More on Notation (Optional)</h2>
 
 <div class="paragraph"> </div>
 
@@ -1862,7 +1953,7 @@ For each notation symbol in Coq, we can specify its <i>precedence
 </div>
 
 <div class="doc">
-<a id="lab42"></a><h2 class="section">Fixpoints and Structural Recursion (Optional)</h2>
+<a id="lab43"></a><h2 class="section">Fixpoints and Structural Recursion (Optional)</h2>
 
 <div class="paragraph"> </div>
 
@@ -1895,7 +1986,7 @@ When Coq checks this definition, it notes that <span class="inlinecode"><span cl
     necessary to write functions in slightly unnatural ways. 
 <div class="paragraph"> </div>
 
-<a id="lab43"></a><h4 class="section">Exercise: 2 stars, standard, optional (decreasing)</h4>
+<a id="lab44"></a><h4 class="section">Exercise: 2 stars, standard, optional (decreasing)</h4>
  To get a concrete sense of this, find a way to write a sensible
     <span class="inlinecode"><span class="id" title="keyword">Fixpoint</span></span> definition (of a simple function on numbers, say) that
     <i>does</i> terminate on all inputs, but that Coq will reject because
@@ -1912,15 +2003,15 @@ When Coq checks this definition, it notes that <span class="inlinecode"><span cl
 
 
 <div class="doc">
-<a id="lab44"></a><h1 class="section">More Exercises</h1>
+<a id="lab45"></a><h1 class="section">More Exercises</h1>
 
 <div class="paragraph"> </div>
 
-<a id="lab45"></a><h2 class="section">Warmups</h2>
+<a id="lab46"></a><h2 class="section">Warmups</h2>
 
 <div class="paragraph"> </div>
 
-<a id="lab46"></a><h4 class="section">Exercise: 1 star, standard (identity_fn_applied_twice)</h4>
+<a id="lab47"></a><h4 class="section">Exercise: 1 star, standard (identity_fn_applied_twice)</h4>
  Use the tactics you have learned so far to prove the following
     theorem about boolean functions. 
 </div>
@@ -1938,7 +2029,7 @@ When Coq checks this definition, it notes that <span class="inlinecode"><span cl
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab47"></a><h4 class="section">Exercise: 1 star, standard (negation_fn_applied_twice)</h4>
+<a id="lab48"></a><h4 class="section">Exercise: 1 star, standard (negation_fn_applied_twice)</h4>
  Now state and prove a theorem <span class="inlinecode"><span class="id" title="var">negation_fn_applied_twice</span></span> similar
     to the previous one but where the second hypothesis says that the
     function <span class="inlinecode"><span class="id" title="var">f</span></span> has the property that <span class="inlinecode"><span class="id" title="var">f</span></span> <span class="inlinecode"><span class="id" title="var">x</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">negb</span></span> <span class="inlinecode"><span class="id" title="var">x</span></span>. 
@@ -1954,7 +2045,7 @@ When Coq checks this definition, it notes that <span class="inlinecode"><span cl
 (The last definition is used by the autograder.)  <font size=-2>&#9744;</font> 
 <div class="paragraph"> </div>
 
-<a id="lab48"></a><h4 class="section">Exercise: 3 stars, standard, optional (andb_eq_orb)</h4>
+<a id="lab49"></a><h4 class="section">Exercise: 3 stars, standard, optional (andb_eq_orb)</h4>
  Prove the following theorem.  (Hint: This one can be a bit tricky,
     depending on how you approach it.  You will probably need both
     <span class="inlinecode"><span class="id" title="tactic">destruct</span></span> and <span class="inlinecode"><span class="id" title="tactic">rewrite</span></span>, but destructing everything in sight is
@@ -1974,11 +2065,12 @@ When Coq checks this definition, it notes that <span class="inlinecode"><span cl
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab49"></a><h2 class="section">Course Late Policies Formalized</h2>
+<a id="lab50"></a><h2 class="section">Course Late Policies Formalized</h2>
 
 <div class="paragraph"> </div>
 
- Suppose that a course has a grading policy based on late days such
+ We do not accept late submissions in the Proofs are Programs course at RUB,
+    but suppose that a course has a grading policy based on late days such
     that a student's final letter grade is lowered if they submit too
     many homework assignments late.
 
@@ -2116,7 +2208,7 @@ We can test the <span class="inlinecode"><span class="id" title="var">letter_com
 
  As a further sanity check, we can prove that the
     <span class="inlinecode"><span class="id" title="var">letter_comparison</span></span> function does indeed give the result <span class="inlinecode"><span class="id" title="var">Eq</span></span> when
-    comparing a letter <span class="inlinecode"><span class="id" title="var">l</span></span> against itself.  <a id="lab50"></a><h4 class="section">Exercise: 1 star, standard (letter_comparison)</h4>
+    comparing a letter <span class="inlinecode"><span class="id" title="var">l</span></span> against itself.  <a id="lab51"></a><h4 class="section">Exercise: 1 star, standard (letter_comparison)</h4>
  Prove the following theorem. 
 </div>
 <div class="code">
@@ -2149,7 +2241,7 @@ We can test the <span class="inlinecode"><span class="id" title="var">letter_com
 </div>
 
 <div class="doc">
-<a id="lab51"></a><h4 class="section">Exercise: 2 stars, standard (grade_comparison)</h4>
+<a id="lab52"></a><h4 class="section">Exercise: 2 stars, standard (grade_comparison)</h4>
  Use pattern matching to complete the following definition.  Note
     that the ordering on grades is sometimes called "lexicographic"
     ordering: we first compare the letters and, only in the case that
@@ -2251,7 +2343,7 @@ Now we can state a better version of the lower letter theorem that
     actually is provable.  In this version, the hypothesis about <span class="inlinecode"><span class="id" title="var">F</span></span>
     says that <span class="inlinecode"><span class="id" title="var">F</span></span> is strictly smaller than <span class="inlinecode"><span class="id" title="var">l</span></span>, which rules out the
     problematic case above. In other words, as long as <span class="inlinecode"><span class="id" title="var">l</span></span> is bigger
-    than <span class="inlinecode"><span class="id" title="var">F</span></span>, it will be lowered. <a id="lab52"></a><h4 class="section">Exercise: 2 stars, standard (lower_letter_lowers)</h4>
+    than <span class="inlinecode"><span class="id" title="var">F</span></span>, it will be lowered. <a id="lab53"></a><h4 class="section">Exercise: 2 stars, standard (lower_letter_lowers)</h4>
  Prove the following theorem. 
 </div>
 <div class="code">
@@ -2268,7 +2360,7 @@ Now we can state a better version of the lower letter theorem that
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab53"></a><h4 class="section">Exercise: 2 stars, standard (lower_grade)</h4>
+<a id="lab54"></a><h4 class="section">Exercise: 2 stars, standard (lower_grade)</h4>
  We can now use the <span class="inlinecode"><span class="id" title="var">lower_letter</span></span> definition as a helper to define
     what it means to lower a grade by one step.  Implement the
     definition below so that it sends a grade <span class="inlinecode"><span class="id" title="var">g</span></span> to one step lower
@@ -2341,7 +2433,7 @@ Note: Coq makes no distinction between an <span class="inlinecode"><span class="
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab54"></a><h4 class="section">Exercise: 3 stars, standard (lower_grade_lowers)</h4>
+<a id="lab55"></a><h4 class="section">Exercise: 3 stars, standard (lower_grade_lowers)</h4>
  Now prove the following theorem, which says that, as long as the
     grade starts out above F-, the <span class="inlinecode"><span class="id" title="var">lower_grade</span></span> option does indeed
     lower the grade.  As usual, destructing everything in sight is
@@ -2430,7 +2522,7 @@ Let's prove some properties about this policy...
    you can rewrite using the hypothesis. 
 <div class="paragraph"> </div>
 
-<a id="lab55"></a><h4 class="section">Exercise: 2 stars, standard (no_penalty_for_mostly_on_time)</h4>
+<a id="lab56"></a><h4 class="section">Exercise: 2 stars, standard (no_penalty_for_mostly_on_time)</h4>
  Prove the following theorem. 
 </div>
 <div class="code">
@@ -2452,7 +2544,7 @@ Let's prove some properties about this policy...
     step. 
 <div class="paragraph"> </div>
 
-<a id="lab56"></a><h4 class="section">Exercise: 2 stars, standard (graded_lowered_once)</h4>
+<a id="lab57"></a><h4 class="section">Exercise: 2 stars, standard (graded_lowered_once)</h4>
  Prove the following theorem. 
 </div>
 <div class="code">
@@ -2473,11 +2565,11 @@ Let's prove some properties about this policy...
 </div>
 
 <div class="doc">
-<a id="lab57"></a><h2 class="section">Binary Numerals</h2>
+<a id="lab58"></a><h2 class="section">Binary Numerals</h2>
 
 <div class="paragraph"> </div>
 
-<a id="lab58"></a><h4 class="section">Exercise: 3 stars, standard (binary)</h4>
+<a id="lab59"></a><h4 class="section">Exercise: 3 stars, standard (binary)</h4>
  We can generalize our unary representation of natural numbers to
     the more efficient binary representation by treating a binary
     number as a sequence of constructors <span class="inlinecode"><span class="id" title="var">B<sub>0</sub></span></span> and <span class="inlinecode"><span class="id" title="var">B<sub>1</sub></span></span> (representing 0s
@@ -2551,114 +2643,9 @@ The following "unit tests" of your increment and binary-to-unary
 <font size=-2>&#9744;</font>
 </div>
 
-
-<div class="doc">
-<a id="lab59"></a><h1 class="section">Testing Your Solutions</h1>
-
-<div class="paragraph"> </div>
-
- Each SF chapter comes with a test file containing scripts that
-    check whether you have solved the required exercises. If you're
-    using SF as part of a course, your instructors will likely be
-    running these test files to autograde your solutions. You can also
-    use these test files, if you like, to make sure you haven't missed
-    anything.
-
-<div class="paragraph"> </div>
-
-    Important: This step is <i>optional</i>: if you've completed all the
-    non-optional exercises and Coq accepts your answers, this already
-    shows that you are in good shape.
-
-<div class="paragraph"> </div>
-
-    The test file for this chapter is <span class="inlinecode"><span class="id" title="var">BasicsTest.v</span></span>. To run it, make
-    sure you have saved <span class="inlinecode"><span class="id" title="var">Basics.v</span></span> to disk.  Then do this:
-<br/>
-<span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">coqc</span> -<span class="id" title="var">Q</span> . <span class="id" title="var">LF</span> <span class="id" title="var">Basics.v</span><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">coqc</span> -<span class="id" title="var">Q</span> . <span class="id" title="var">LF</span> <span class="id" title="var">BasicsTest.v</span>
-</span>    (Make sure you do this in a directory that also contains a file named
-    <span class="inlinecode"><span class="id" title="var">_CoqProject</span></span> containing the single line <span class="inlinecode">-<span class="id" title="var">Q</span></span> <span class="inlinecode">.</span> <span class="inlinecode"><span class="id" title="var">LF</span></span>.)
-
-<div class="paragraph"> </div>
-
-    If you accidentally deleted an exercise or changed its name, then
-    <span class="inlinecode"><span class="id" title="var">make</span></span> <span class="inlinecode"><span class="id" title="var">BasicsTest.vo</span></span> will fail with an error that tells you the
-    name of the missing exercise.  Otherwise, you will get a lot of
-    useful output:
-
-<div class="paragraph"> </div>
-
-<ul class="doclist">
-<li> First will be all the output produced by <span class="inlinecode"><span class="id" title="var">Basics.v</span></span> itself.  At
-      the end of that you will see <span class="inlinecode"><span class="id" title="var">COQC</span></span> <span class="inlinecode"><span class="id" title="var">BasicsTest.v</span></span>.
-
-<div class="paragraph"> </div>
-
-
-</li>
-<li> Second, for each required exercise, there is a report that tells
-      you its point value (the number of stars or some fraction
-      thereof if there are multiple parts to the exercise), whether
-      its type is ok, and what assumptions it relies upon.
-
-<div class="paragraph"> </div>
-
-      If the <i>type</i> is not <span class="inlinecode"><span class="id" title="var">ok</span></span>, it means you proved the wrong thing:
-      most likely, you accidentally modified the theorem statement
-      while you were proving it.  The autograder won't give you any
-      points for that, so make sure to correct the theorem.
-
-<div class="paragraph"> </div>
-
-      The <i>assumptions</i> are any unproved theorems which your solution
-      relies upon.  "Closed under the global context" is a fancy way
-      of saying "none": you have solved the exercise. (Hooray!)  On
-      the other hand, a list of axioms means you haven't fully solved
-      the exercise. (But see below regarding "Allowed Axioms.") If the
-      exercise name itself is in the list, that means you haven't
-      solved it; probably you have <span class="inlinecode"><span class="id" title="var">Admitted</span></span> it.
-
-<div class="paragraph"> </div>
-
-
-</li>
-<li> Third, you will see the maximum number of points in standard and
-      advanced versions of the assignment.  That number is based on
-      the number of stars in the non-optional exercises.
-
-<div class="paragraph"> </div>
-
-
-</li>
-<li> Fourth, you will see a list of "Allowed Axioms".  These are
-      unproved theorems that your solution is permitted to depend
-      upon.  You'll probably see something about
-      <span class="inlinecode"><span class="id" title="var">functional_extensionality</span></span> for this chapter; we'll cover what
-      that means in a later chapter.
-
-<div class="paragraph"> </div>
-
-
-</li>
-<li> Finally, you will see a summary of whether you have solved each
-      exercise.  Note that summary does not include the critical
-      information of whether the type is ok (that is, whether you
-      accidentally changed the theorem statement): you have to look
-      above for that information.
-
-</li>
-</ul>
-
-<div class="paragraph"> </div>
-
-    Exercises that are manually graded will also show up in the
-    output.  But since they have to be graded by a human, the test
-    script won't be able to tell you much about them.  
-</div>
 <div class="code">
 
-<span class="comment">(*&nbsp;2023-04-05&nbsp;13:31&nbsp;*)</span><br/>
+<span class="comment">(*&nbsp;2023-04-13&nbsp;16:57&nbsp;*)</span><br/>
 </div>
 </div>
 
