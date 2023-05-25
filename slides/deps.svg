@@ -169,9 +169,9 @@
 <g id="node10" class="node">
 <title>Logic1</title>
 <g id="a_node10"><a xlink:href="Logic1.html" xlink:title="Go to chapter" target="_top">
-<polygon fill="lightblue" stroke="black" points="341,-604 229,-604 229,-560 341,-560 341,-604"/>
+<polygon fill="lightblue" stroke="black" points="339,-604 231,-604 231,-560 339,-560 339,-604"/>
 <text text-anchor="start" x="269.5" y="-587.2" font-family="Times,serif" font-size="11.00">Logic1</text>
-<text text-anchor="start" x="247" y="-570.8" font-family="Times,serif" font-size="9.00">Logic in Coq (part 1)</text>
+<text text-anchor="start" x="249" y="-570.8" font-family="Times,serif" font-size="9.00">Logic in Coq: part 1</text>
 </a>
 </g>
 </g>
@@ -255,9 +255,9 @@
 <g id="node11" class="node">
 <title>Logic</title>
 <g id="a_node11"><a xlink:href="Logic.html" xlink:title="Go to chapter" target="_top">
-<polygon fill="lightblue" stroke="black" points="341,-524 229,-524 229,-480 341,-480 341,-524"/>
+<polygon fill="lightblue" stroke="black" points="339,-524 231,-524 231,-480 339,-480 339,-524"/>
 <text text-anchor="start" x="272" y="-507.2" font-family="Times,serif" font-size="11.00">Logic</text>
-<text text-anchor="start" x="247" y="-490.8" font-family="Times,serif" font-size="9.00">Logic in Coq (part 2)</text>
+<text text-anchor="start" x="249" y="-490.8" font-family="Times,serif" font-size="9.00">Logic in Coq: part 2</text>
 </a>
 </g>
 </g>

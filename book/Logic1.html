@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="common/css/sf.css" rel="stylesheet" type="text/css" />
-<title>Logic1</title>
+<title>Logic1: Logic in Coq: part 1</title>
 <link href="common/jquery-ui/jquery-ui.css" rel="stylesheet">
 <script src="common/jquery-ui/external/jquery/jquery.js"></script>
 <script src="common/jquery-ui/jquery-ui.js"></script>
@@ -29,13 +29,9 @@
 
 <div id="main">
 
-<h1 class="libtitle">Logic1</h1>
+<h1 class="libtitle">Logic1: Logic in Coq<span class="subtitle">part 1</span></h1>
 
 
-<div class="doc">
-<a id="lab185"></a><h1 class="section">Logic: Logic in Coq (part 1)</h1>
-
-</div>
 
 <div class="doc">
 We have now seen many examples of factual claims (<i>propositions</i>)
@@ -175,11 +171,11 @@ The equality operator <span class="inlinecode">=</span> is a (binary) function t
 </div>
 
 <div class="doc">
-<a id="lab186"></a><h1 class="section">Logical Connectives</h1>
+<a id="lab185"></a><h1 class="section">Logical Connectives</h1>
 
 <div class="paragraph"> </div>
 
-<a id="lab187"></a><h2 class="section">Conjunction</h2>
+<a id="lab186"></a><h2 class="section">Conjunction</h2>
 
 <div class="paragraph"> </div>
 
@@ -237,7 +233,7 @@ Since applying a theorem with hypotheses to some goal has the
 </div>
 
 <div class="doc">
-<a id="lab188"></a><h4 class="section">Exercise: 2 stars, standard (plus_is_O)</h4>
+<a id="lab187"></a><h4 class="section">Exercise: 2 stars, standard (plus_is_O)</h4>
 
 </div>
 <div class="code">
@@ -344,7 +340,7 @@ Another common situation with conjunctions is that we know
 </div>
 
 <div class="doc">
-<a id="lab189"></a><h4 class="section">Exercise: 1 star, standard, optional (proj2)</h4>
+<a id="lab188"></a><h4 class="section">Exercise: 1 star, standard, optional (proj2)</h4>
 
 </div>
 <div class="code">
@@ -375,7 +371,7 @@ Another common situation with conjunctions is that we know
 </div>
 
 <div class="doc">
-<a id="lab190"></a><h4 class="section">Exercise: 1 star, standard (and_assoc)</h4>
+<a id="lab189"></a><h4 class="section">Exercise: 1 star, standard (and_assoc)</h4>
  (In the following proof of associativity, notice how the <i>nested</i>
     <span class="inlinecode"><span class="id" title="tactic">intros</span></span> pattern breaks the hypothesis <span class="inlinecode"><span class="id" title="var">H</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="var">P</span></span> <span class="inlinecode">∧</span> <span class="inlinecode">(<span class="id" title="var">Q</span></span> <span class="inlinecode">∧</span> <span class="inlinecode"><span class="id" title="var">R</span>)</span> down into
     <span class="inlinecode"><span class="id" title="var">HP</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="var">P</span></span>, <span class="inlinecode"><span class="id" title="var">HQ</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="var">Q</span></span>, and <span class="inlinecode"><span class="id" title="var">HR</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="var">R</span></span>.  Finish the proof from there.) 
@@ -403,7 +399,7 @@ Another common situation with conjunctions is that we know
 </div>
 
 <div class="doc">
-<a id="lab191"></a><h2 class="section">Disjunction</h2>
+<a id="lab190"></a><h2 class="section">Disjunction</h2>
 
 <div class="paragraph"> </div>
 
@@ -475,7 +471,7 @@ We can see in this example that, when we perform case analysis on a
 </div>
 
 <div class="doc">
-<a id="lab192"></a><h4 class="section">Exercise: 1 star, standard (mult_is_O)</h4>
+<a id="lab191"></a><h4 class="section">Exercise: 1 star, standard (mult_is_O)</h4>
 
 </div>
 <div class="code">
@@ -489,7 +485,7 @@ We can see in this example that, when we perform case analysis on a
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab193"></a><h4 class="section">Exercise: 1 star, standard (or_commut)</h4>
+<a id="lab192"></a><h4 class="section">Exercise: 1 star, standard (or_commut)</h4>
 
 </div>
 <div class="code">
@@ -503,7 +499,7 @@ We can see in this example that, when we perform case analysis on a
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab194"></a><h2 class="section">Falsehood and Negation</h2>
+<a id="lab193"></a><h2 class="section">Falsehood and Negation</h2>
  So far, we have mostly been concerned with proving "positive"
     statements -- addition is commutative, appending lists is
     associative, etc.  Of course, we may also be interested in
@@ -556,7 +552,7 @@ The Latin <i>ex falso quodlibet</i> means, literally, "from falsehood
     principle of explosion. 
 <div class="paragraph"> </div>
 
-<a id="lab195"></a><h4 class="section">Exercise: 2 stars, standard, optional (not_implies_our_not)</h4>
+<a id="lab194"></a><h4 class="section">Exercise: 2 stars, standard, optional (not_implies_our_not)</h4>
  Show that Coq's definition of negation implies the intuitive one
     mentioned above. Hint: while getting accustomed to Coq's
     definition of <span class="inlinecode"><span class="id" title="var">not</span></span>, you might find it helpful to <span class="inlinecode"><span class="id" title="tactic">unfold</span></span> <span class="inlinecode"><span class="id" title="var">not</span></span>
@@ -646,7 +642,7 @@ It takes a little practice to get used to working with negation in
 </div>
 
 <div class="doc">
-<a id="lab196"></a><h4 class="section">Exercise: 2 stars, advanced (double_neg_informal)</h4>
+<a id="lab195"></a><h4 class="section">Exercise: 2 stars, advanced (double_neg_informal)</h4>
  Write an informal proof of <span class="inlinecode"><span class="id" title="var">double_neg</span></span>:
 
 <div class="paragraph"> </div>
@@ -664,7 +660,7 @@ It takes a little practice to get used to working with negation in
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab197"></a><h4 class="section">Exercise: 2 stars, standard, especially useful (contrapositive)</h4>
+<a id="lab196"></a><h4 class="section">Exercise: 2 stars, standard, especially useful (contrapositive)</h4>
 
 </div>
 <div class="code">
@@ -678,7 +674,7 @@ It takes a little practice to get used to working with negation in
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab198"></a><h4 class="section">Exercise: 1 star, standard (not_both_true_and_false)</h4>
+<a id="lab197"></a><h4 class="section">Exercise: 1 star, standard (not_both_true_and_false)</h4>
 
 </div>
 <div class="code">
@@ -692,7 +688,7 @@ It takes a little practice to get used to working with negation in
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab199"></a><h4 class="section">Exercise: 1 star, advanced (not_PNP_informal)</h4>
+<a id="lab198"></a><h4 class="section">Exercise: 1 star, advanced (not_PNP_informal)</h4>
  Write an informal proof (in English) of the proposition <span class="inlinecode"><span class="id" title="keyword">∀</span></span> <span class="inlinecode"><span class="id" title="var">P</span></span>
     <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span>,</span> <span class="inlinecode">~(<span class="id" title="var">P</span></span> <span class="inlinecode">∧</span> <span class="inlinecode">¬<span class="id" title="var">P</span>)</span>. 
 </div>
@@ -707,7 +703,7 @@ It takes a little practice to get used to working with negation in
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab200"></a><h4 class="section">Exercise: 2 stars, standard (de_morgan_not_or)</h4>
+<a id="lab199"></a><h4 class="section">Exercise: 2 stars, standard (de_morgan_not_or)</h4>
  <i>De Morgan's Laws</i>, named for Augustus De Morgan, describe how
     negation interacts with conjunction and disjunction.  The
     following law says that "the negation of a disjunction is the
@@ -779,7 +775,7 @@ Since reasoning with <span class="inlinecode"><span class="id" title="var">ex_fa
 </div>
 
 <div class="doc">
-<a id="lab201"></a><h2 class="section">Truth</h2>
+<a id="lab200"></a><h2 class="section">Truth</h2>
 
 <div class="paragraph"> </div>
 
@@ -845,7 +841,7 @@ To generalize this to other constructors, we simply have to
     us! 
 <div class="paragraph"> </div>
 
-<a id="lab202"></a><h2 class="section">Logical Equivalence</h2>
+<a id="lab201"></a><h2 class="section">Logical Equivalence</h2>
 
 <div class="paragraph"> </div>
 
@@ -900,7 +896,7 @@ The <span class="inlinecode"><span class="id" title="tactic">apply</span></span>
 </div>
 
 <div class="doc">
-<a id="lab203"></a><h4 class="section">Exercise: 1 star, standard, optional (iff_properties)</h4>
+<a id="lab202"></a><h4 class="section">Exercise: 1 star, standard, optional (iff_properties)</h4>
  Using the above proof that <span class="inlinecode">↔</span> is symmetric (<span class="inlinecode"><span class="id" title="var">iff_sym</span></span>) as
     a guide, prove that it is also reflexive and transitive. 
 </div>
@@ -920,7 +916,7 @@ The <span class="inlinecode"><span class="id" title="tactic">apply</span></span>
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab204"></a><h4 class="section">Exercise: 3 stars, standard (or_distributes_over_and)</h4>
+<a id="lab203"></a><h4 class="section">Exercise: 3 stars, standard (or_distributes_over_and)</h4>
 
 </div>
 <div class="code">
@@ -934,7 +930,7 @@ The <span class="inlinecode"><span class="id" title="tactic">apply</span></span>
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab205"></a><h2 class="section">Setoids and Logical Equivalence</h2>
+<a id="lab204"></a><h2 class="section">Setoids and Logical Equivalence</h2>
 
 <div class="paragraph"> </div>
 
@@ -1015,7 +1011,7 @@ We can now use these facts with <span class="inlinecode"><span class="id" title=
 &nbsp;&nbsp;<span class="id" title="tactic">rewrite</span> <a class="idref" href="Logic1.html#mul_eq_0"><span class="id" title="lemma">mul_eq_0</span></a>. <span class="id" title="tactic">rewrite</span> <a class="idref" href="Logic1.html#mul_eq_0"><span class="id" title="lemma">mul_eq_0</span></a>. <span class="id" title="tactic">rewrite</span> <a class="idref" href="Logic1.html#or_assoc"><span class="id" title="lemma">or_assoc</span></a>.<br/>
 &nbsp;&nbsp;<span class="id" title="tactic">reflexivity</span>.<br/>
 <span class="id" title="keyword">Qed</span>.<br/><hr class='doublespaceincode'/>
-<span class="comment">(*&nbsp;2023-05-25&nbsp;14:09&nbsp;*)</span><br/>
+<span class="comment">(*&nbsp;2023-05-25&nbsp;14:41&nbsp;*)</span><br/>
 </div>
 </div>
 

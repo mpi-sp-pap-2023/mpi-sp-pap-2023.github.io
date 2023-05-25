@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="common/css/sf.css" rel="stylesheet" type="text/css" />
-<title>Logic: Logic in Coq (part 2</title>
+<title>Logic: Logic in Coq: part 2</title>
 <link href="common/jquery-ui/jquery-ui.css" rel="stylesheet">
 <script src="common/jquery-ui/external/jquery/jquery.js"></script>
 <script src="common/jquery-ui/jquery-ui.js"></script>
@@ -29,12 +29,12 @@
 
 <div id="main">
 
-<h1 class="libtitle">Logic<span class="subtitle">Logic in Coq (part 2</span></h1>
+<h1 class="libtitle">Logic: Logic in Coq<span class="subtitle">part 2</span></h1>
 
 
 
 <div class="doc">
-<a id="lab206"></a><h2 class="section">Existential Quantification</h2>
+<a id="lab205"></a><h2 class="section">Existential Quantification</h2>
 
 <div class="paragraph"> </div>
 
@@ -79,7 +79,7 @@ Conversely, if we have an existential hypothesis <span class="inlinecode"><span 
 </div>
 
 <div class="doc">
-<a id="lab207"></a><h4 class="section">Exercise: 1 star, standard, especially useful (dist_not_exists)</h4>
+<a id="lab206"></a><h4 class="section">Exercise: 1 star, standard, especially useful (dist_not_exists)</h4>
  Prove that "<span class="inlinecode"><span class="id" title="var">P</span></span> holds for all <span class="inlinecode"><span class="id" title="var">x</span></span>" implies "there is no <span class="inlinecode"><span class="id" title="var">x</span></span> for
     which <span class="inlinecode"><span class="id" title="var">P</span></span> does not hold."  (Hint: <span class="inlinecode"><span class="id" title="tactic">destruct</span></span> <span class="inlinecode"><span class="id" title="var">H</span></span> <span class="inlinecode"><span class="id" title="keyword">as</span></span> <span class="inlinecode">[<span class="id" title="var">x</span></span> <span class="inlinecode"><span class="id" title="var">E</span>]</span> works on
     existential assumptions!)  
@@ -96,7 +96,7 @@ Conversely, if we have an existential hypothesis <span class="inlinecode"><span 
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab208"></a><h4 class="section">Exercise: 2 stars, standard (dist_exists_or)</h4>
+<a id="lab207"></a><h4 class="section">Exercise: 2 stars, standard (dist_exists_or)</h4>
  Prove that existential quantification distributes over
     disjunction. 
 </div>
@@ -112,7 +112,7 @@ Conversely, if we have an existential hypothesis <span class="inlinecode"><span 
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab209"></a><h4 class="section">Exercise: 3 stars, standard, optional (leb_plus_exists)</h4>
+<a id="lab208"></a><h4 class="section">Exercise: 3 stars, standard, optional (leb_plus_exists)</h4>
 
 </div>
 <div class="code">
@@ -127,7 +127,7 @@ Conversely, if we have an existential hypothesis <span class="inlinecode"><span 
 
 
 <div class="doc">
-<a id="lab210"></a><h1 class="section">Programming with Propositions</h1>
+<a id="lab209"></a><h1 class="section">Programming with Propositions</h1>
 
 <div class="paragraph"> </div>
 
@@ -223,7 +223,7 @@ This way of defining propositions recursively, though convenient
     of strengths and limitations. 
 <div class="paragraph"> </div>
 
-<a id="lab211"></a><h4 class="section">Exercise: 2 stars, standard (In_map_iff)</h4>
+<a id="lab210"></a><h4 class="section">Exercise: 2 stars, standard (In_map_iff)</h4>
 
 </div>
 <div class="code">
@@ -245,7 +245,7 @@ This way of defining propositions recursively, though convenient
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab212"></a><h4 class="section">Exercise: 2 stars, standard (In_app_iff)</h4>
+<a id="lab211"></a><h4 class="section">Exercise: 2 stars, standard (In_app_iff)</h4>
 
 </div>
 <div class="code">
@@ -260,7 +260,7 @@ This way of defining propositions recursively, though convenient
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab213"></a><h4 class="section">Exercise: 3 stars, standard, especially useful (All)</h4>
+<a id="lab212"></a><h4 class="section">Exercise: 3 stars, standard, especially useful (All)</h4>
  Recall that functions returning propositions can be seen as
     <i>properties</i> of their arguments. For instance, if <span class="inlinecode"><span class="id" title="var">P</span></span> has type
     <span class="inlinecode"><span class="id" title="var">nat</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>, then <span class="inlinecode"><span class="id" title="var">P</span></span> <span class="inlinecode"><span class="id" title="var">n</span></span> states that property <span class="inlinecode"><span class="id" title="var">P</span></span> holds of <span class="inlinecode"><span class="id" title="var">n</span></span>.
@@ -289,7 +289,7 @@ This way of defining propositions recursively, though convenient
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab214"></a><h4 class="section">Exercise: 2 stars, standard, optional (combine_odd_even)</h4>
+<a id="lab213"></a><h4 class="section">Exercise: 2 stars, standard, optional (combine_odd_even)</h4>
  Complete the definition of the <span class="inlinecode"><span class="id" title="var">combine_odd_even</span></span> function below.
     It takes as arguments two properties of numbers, <span class="inlinecode"><span class="id" title="var">Podd</span></span> and
     <span class="inlinecode"><span class="id" title="var">Peven</span></span>, and it should return a property <span class="inlinecode"><span class="id" title="var">P</span></span> such that <span class="inlinecode"><span class="id" title="var">P</span></span> <span class="inlinecode"><span class="id" title="var">n</span></span> is
@@ -333,7 +333,7 @@ To test your definition, prove the following facts:
 
 
 <div class="doc">
-<a id="lab215"></a><h1 class="section">Applying Theorems to Arguments</h1>
+<a id="lab214"></a><h1 class="section">Applying Theorems to Arguments</h1>
 
 <div class="paragraph"> </div>
 
@@ -597,7 +597,7 @@ We will see many more examples in later chapters.
 </div>
 
 <div class="doc">
-<a id="lab216"></a><h1 class="section">Coq vs. Set Theory</h1>
+<a id="lab215"></a><h1 class="section">Coq vs. Set Theory</h1>
 
 <div class="paragraph"> </div>
 
@@ -614,7 +614,7 @@ We will see many more examples in later chapters.
     most significant differences between the two worlds. 
 <div class="paragraph"> </div>
 
-<a id="lab217"></a><h2 class="section">Functional Extensionality</h2>
+<a id="lab216"></a><h2 class="section">Functional Extensionality</h2>
 
 <div class="paragraph"> </div>
 
@@ -737,7 +737,7 @@ Naturally, we must be careful when adding new axioms into Coq's
     local directory has the proof of <span class="inlinecode"><span class="id" title="var">add_comm</span></span> filled in.) 
 <div class="paragraph"> </div>
 
-<a id="lab218"></a><h4 class="section">Exercise: 4 stars, standard (tr_rev_correct)</h4>
+<a id="lab217"></a><h4 class="section">Exercise: 4 stars, standard (tr_rev_correct)</h4>
  One problem with the definition of the list-reversing function
     <span class="inlinecode"><span class="id" title="var">rev</span></span> that we have is that it performs a call to <span class="inlinecode"><span class="id" title="var">app</span></span> on each
     step; running <span class="inlinecode"><span class="id" title="var">app</span></span> takes time asymptotically linear in the size
@@ -777,7 +777,7 @@ This version of <span class="inlinecode"><span class="id" title="var">rev</span>
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab219"></a><h2 class="section">Propositions vs. Booleans</h2>
+<a id="lab218"></a><h2 class="section">Propositions vs. Booleans</h2>
  We've seen two different ways of expressing logical claims in Coq:
     with <i>booleans</i> (of type <span class="inlinecode"><span class="id" title="var">bool</span></span>), and with <i>propositions</i> (of type
     <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>).
@@ -821,7 +821,7 @@ This version of <span class="inlinecode"><span class="id" title="var">rev</span>
     the propositional <span class="inlinecode"><span class="id" title="var">eq</span></span> can be. 
 <div class="paragraph"> </div>
 
-<a id="lab220"></a><h2 class="section">Working with Decidable Properties</h2>
+<a id="lab219"></a><h2 class="section">Working with Decidable Properties</h2>
 
 <div class="paragraph"> </div>
 
@@ -878,7 +878,7 @@ Of course, it would be pretty strange if these two
 </div>
 
 <div class="doc">
-<a id="lab221"></a><h4 class="section">Exercise: 3 stars, standard (even_double_conv)</h4>
+<a id="lab220"></a><h4 class="section">Exercise: 3 stars, standard (even_double_conv)</h4>
 
 </div>
 <div class="code">
@@ -1114,7 +1114,7 @@ We won't discuss reflection any further for the moment, but
     propositional worlds will often be convenient in later chapters. 
 <div class="paragraph"> </div>
 
-<a id="lab222"></a><h4 class="section">Exercise: 2 stars, standard (logical_connectives)</h4>
+<a id="lab221"></a><h4 class="section">Exercise: 2 stars, standard (logical_connectives)</h4>
  The following theorems relate the propositional connectives studied
     in this chapter to the corresponding boolean operations. 
 </div>
@@ -1134,7 +1134,7 @@ We won't discuss reflection any further for the moment, but
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab223"></a><h4 class="section">Exercise: 1 star, standard (eqb_neq)</h4>
+<a id="lab222"></a><h4 class="section">Exercise: 1 star, standard (eqb_neq)</h4>
  The following theorem is an alternate "negative" formulation of
     <span class="inlinecode"><span class="id" title="var">eqb_eq</span></span> that is more convenient in certain situations.  (We'll see
     examples in later chapters.)  Hint: <span class="inlinecode"><span class="id" title="var">not_true_iff_false</span></span>. 
@@ -1151,7 +1151,7 @@ We won't discuss reflection any further for the moment, but
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab224"></a><h4 class="section">Exercise: 3 stars, standard (eqb_list)</h4>
+<a id="lab223"></a><h4 class="section">Exercise: 3 stars, standard (eqb_list)</h4>
  Given a boolean operator <span class="inlinecode"><span class="id" title="var">eqb</span></span> for testing equality of elements of
     some type <span class="inlinecode"><span class="id" title="var">A</span></span>, we can define a function <span class="inlinecode"><span class="id" title="var">eqb_list</span></span> for testing
     equality of lists with elements in <span class="inlinecode"><span class="id" title="var">A</span></span>.  Complete the definition
@@ -1175,7 +1175,7 @@ We won't discuss reflection any further for the moment, but
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab225"></a><h4 class="section">Exercise: 2 stars, standard, especially useful (All_forallb)</h4>
+<a id="lab224"></a><h4 class="section">Exercise: 2 stars, standard, especially useful (All_forallb)</h4>
  Prove the theorem below, which relates <span class="inlinecode"><span class="id" title="var">forallb</span></span>, from the
     exercise <span class="inlinecode"><span class="id" title="var">forall_exists_challenge</span></span> in chapter <a href="Tactics.html"><span class="inlineref">Tactics</span></a>, to
     the <span class="inlinecode"><span class="id" title="keyword">All</span></span> property defined above. 
@@ -1207,7 +1207,7 @@ We won't discuss reflection any further for the moment, but
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab226"></a><h2 class="section">Classical vs. Constructive Logic</h2>
+<a id="lab225"></a><h2 class="section">Classical vs. Constructive Logic</h2>
 
 <div class="paragraph"> </div>
 
@@ -1351,7 +1351,7 @@ It may seem strange that the general excluded middle is not
     additional axioms. 
 <div class="paragraph"> </div>
 
-<a id="lab227"></a><h4 class="section">Exercise: 3 stars, standard (excluded_middle_irrefutable)</h4>
+<a id="lab226"></a><h4 class="section">Exercise: 3 stars, standard (excluded_middle_irrefutable)</h4>
  Proving the consistency of Coq with the general excluded middle
     axiom requires complicated reasoning that cannot be carried out
     within Coq itself.  However, the following theorem implies that it
@@ -1379,7 +1379,7 @@ It may seem strange that the general excluded middle is not
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab228"></a><h4 class="section">Exercise: 3 stars, advanced (not_exists_dist)</h4>
+<a id="lab227"></a><h4 class="section">Exercise: 3 stars, advanced (not_exists_dist)</h4>
  It is a theorem of classical logic that the following two
     assertions are equivalent:
 <br/>
@@ -1404,7 +1404,7 @@ It may seem strange that the general excluded middle is not
 <div class="doc"> 
 <div class="paragraph"> </div>
 
-<a id="lab229"></a><h4 class="section">Exercise: 5 stars, standard, optional (classical_axioms)</h4>
+<a id="lab228"></a><h4 class="section">Exercise: 5 stars, standard, optional (classical_axioms)</h4>
  For those who like a challenge, here is an exercise taken from the
     Coq'Art book by Bertot and Casteran (p. 123).  Each of the
     following four statements, together with <span class="inlinecode"><span class="id" title="var">excluded_middle</span></span>, can be
@@ -1439,7 +1439,7 @@ It may seem strange that the general excluded middle is not
 
 <div class="code">
 
-<span class="comment">(*&nbsp;2023-05-25&nbsp;14:09&nbsp;*)</span><br/>
+<span class="comment">(*&nbsp;2023-05-25&nbsp;14:41&nbsp;*)</span><br/>
 </div>
 </div>
 
