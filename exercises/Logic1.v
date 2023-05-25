@@ -585,6 +585,16 @@ Qed.
     The built-in [discriminate] tactic takes care of all this for
     us! *)
 
+(** **** Exercise: 2 stars, advanced, optional (nil_is_not_cons) *)
+
+(** Use the same technique as above to show that [nil <> x :: xs].
+    Do not use the [discriminate] tactic. *)
+
+Theorem nil_is_not_cons : forall X (x : X) (xs : list X), ~ (nil = x :: xs).
+Proof.
+  (* FILL IN HERE *) Admitted.
+(** [] *)
+
 (* ================================================================= *)
 (** ** Logical Equivalence *)
 
@@ -721,4 +731,4 @@ Proof.
   reflexivity.
 Qed.
 
-(* 2023-05-25 14:41 *)
+(* 2023-05-25 17:00 *)
