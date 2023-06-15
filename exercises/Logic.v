@@ -16,9 +16,8 @@ From LF Require Export Logic1.
     [P] holds for some specific choice of value for [x], known as the
     _witness_ of the existential.  This is done in two steps: First,
     we explicitly tell Coq which witness [t] we have in mind by
-    invoking the tactic  (displayed as [exists t]
-    below). Then we prove that [P] holds after all occurrences of [x]
-    are replaced by [t]. *)
+    invoking the tactic [exists t]. Then we prove that [P] holds after all
+    occurrences of [x] are replaced by [t]. *)
 
 Definition Even x := exists n : nat, x = double n.
 Check Even : nat -> Prop.
@@ -1064,4 +1063,4 @@ Definition implies_to_or := forall P Q:Prop,
 
     [] *)
 
-(* 2023-06-15 13:38 *)
+(* 2023-06-15 14:10 *)
