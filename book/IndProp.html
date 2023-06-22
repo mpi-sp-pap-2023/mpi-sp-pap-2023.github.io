@@ -630,17 +630,15 @@ This definition says:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;———————————————————— (<span class="id" title="var">ev_SS</span>)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">ev</span> (<span class="id" title="var">S</span> (<span class="id" title="var">S</span> (<span class="id" title="var">S</span> (<span class="id" title="var">S</span> 0))))
 </span>
-</div>
-<div class="code">
+<div class="paragraph"> </div>
 
-<span class="comment">(*&nbsp;In&nbsp;words,&nbsp;to&nbsp;show&nbsp;that&nbsp;<span class="inlinecode">4</span>&nbsp;is&nbsp;even,&nbsp;by&nbsp;rule&nbsp;<span class="inlinecode"><span class="id" title="var">ev_SS</span></span>,&nbsp;it<br/>
-&nbsp;&nbsp;&nbsp;suffices&nbsp;to&nbsp;show&nbsp;that&nbsp;<span class="inlinecode">2</span>&nbsp;is&nbsp;even.&nbsp;This,&nbsp;in&nbsp;turn,&nbsp;is&nbsp;again<br/>
-&nbsp;&nbsp;&nbsp;guaranteed&nbsp;by&nbsp;rule&nbsp;<span class="inlinecode"><span class="id" title="var">ev_SS</span></span>,&nbsp;as&nbsp;long&nbsp;as&nbsp;we&nbsp;can&nbsp;show&nbsp;that&nbsp;<span class="inlinecode">0</span>&nbsp;is<br/>
-&nbsp;&nbsp;&nbsp;even.&nbsp;But&nbsp;this&nbsp;last&nbsp;fact&nbsp;follows&nbsp;directly&nbsp;from&nbsp;the&nbsp;<span class="inlinecode"><span class="id" title="var">ev_0</span></span>&nbsp;rule.&nbsp;*)</span><br/>
-</div>
+ In words, to show that <span class="inlinecode">4</span> is even, by rule <span class="inlinecode"><span class="id" title="var">ev_SS</span></span>, it
+   suffices to show that <span class="inlinecode">2</span> is even. This, in turn, is again
+   guaranteed by rule <span class="inlinecode"><span class="id" title="var">ev_SS</span></span>, as long as we can show that <span class="inlinecode">0</span> is
+   even. But this last fact follows directly from the <span class="inlinecode"><span class="id" title="var">ev_0</span></span> rule. 
+<div class="paragraph"> </div>
 
-<div class="doc">
-We can translate the informal definition of evenness from above
+ We can translate the informal definition of evenness from above
     into a formal <span class="inlinecode"><span class="id" title="keyword">Inductive</span></span> declaration, where each "way that a
     number can be even" corresponds to a separate constructor: 
 </div>
@@ -703,8 +701,9 @@ In an <span class="inlinecode"><span class="id" title="keyword">Inductive</span>
     unnamed <span class="inlinecode"><span class="id" title="var">nat</span></span> argument is an index. 
 <div class="paragraph"> </div>
 
- We can think of this as defining a Coq property <span class="inlinecode"><span class="id" title="var">ev</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="var">nat</span></span> <span class="inlinecode">→</span>
-    <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>, together with "evidence constructors" <span class="inlinecode"><span class="id" title="var">ev_0</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="var">ev</span></span> <span class="inlinecode">0</span> and
+ We can think of the inductive definition of <span class="inlinecode"><span class="id" title="var">ev</span></span> this as defining
+    a Coq property <span class="inlinecode"><span class="id" title="var">ev</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="var">nat</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>, together with "evidence
+    constructors" <span class="inlinecode"><span class="id" title="var">ev_0</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="var">ev</span></span> <span class="inlinecode">0</span> and
     <span class="inlinecode"><span class="id" title="var">ev_SS</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="keyword">∀</span></span> <span class="inlinecode"><span class="id" title="var">n</span>,</span> <span class="inlinecode"><span class="id" title="var">ev</span></span> <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="var">ev</span></span> <span class="inlinecode">(<span class="id" title="var">S</span></span> <span class="inlinecode">(<span class="id" title="var">S</span></span> <span class="inlinecode"><span class="id" title="var">n</span>))</span>. 
 <div class="paragraph"> </div>
 
@@ -3602,7 +3601,7 @@ A function <span class="inlinecode"><span class="id" title="var">m</span></span>
 
 <div class="code">
 
-<span class="comment">(*&nbsp;2023-06-21&nbsp;23:38&nbsp;*)</span><br/>
+<span class="comment">(*&nbsp;2023-06-22&nbsp;09:42&nbsp;*)</span><br/>
 </div>
 </div>
 

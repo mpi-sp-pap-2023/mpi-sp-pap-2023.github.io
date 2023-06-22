@@ -584,8 +584,19 @@ This enables an equivalent definition of the Collatz conjecture:
 </div>
 
 <div class="doc">
-We can think of this as defining a Coq property <span class="inlinecode"><span class="id" title="var">ev</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="var">nat</span></span> <span class="inlinecode">→</span>
-    <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>, together with "evidence constructors" <span class="inlinecode"><span class="id" title="var">ev_0</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="var">ev</span></span> <span class="inlinecode">0</span> and
+We put off discussing syntax so far, but there are a few
+    differences between inductive properties like <span class="inlinecode"><span class="id" title="var">ev</span></span> and inductive
+    types like <span class="inlinecode"><span class="id" title="var">nat</span></span> or <span class="inlinecode"><span class="id" title="var">list</span></span>:
+<br/>
+<span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">Inductive</span> <span class="id" title="var">list</span> (<span class="id" title="var">X</span>:<span class="id" title="keyword">Type</span>) : <span class="id" title="keyword">Type</span> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="var">nil</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="var">cons</span> (<span class="id" title="var">x</span> : <span class="id" title="var">X</span>) (<span class="id" title="var">l</span> : <span class="id" title="var">list</span> <span class="id" title="var">X</span>).
+</span> 
+<div class="paragraph"> </div>
+
+ We can think of the inductive definition of <span class="inlinecode"><span class="id" title="var">ev</span></span> this as defining
+    a Coq property <span class="inlinecode"><span class="id" title="var">ev</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="var">nat</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>, together with "evidence
+    constructors" <span class="inlinecode"><span class="id" title="var">ev_0</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="var">ev</span></span> <span class="inlinecode">0</span> and
     <span class="inlinecode"><span class="id" title="var">ev_SS</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="keyword">∀</span></span> <span class="inlinecode"><span class="id" title="var">n</span>,</span> <span class="inlinecode"><span class="id" title="var">ev</span></span> <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">→</span> <span class="inlinecode"><span class="id" title="var">ev</span></span> <span class="inlinecode">(<span class="id" title="var">S</span></span> <span class="inlinecode">(<span class="id" title="var">S</span></span> <span class="inlinecode"><span class="id" title="var">n</span>))</span>. 
 <div class="paragraph"> </div>
 
