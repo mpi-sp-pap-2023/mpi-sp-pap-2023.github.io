@@ -319,9 +319,7 @@ Recall the definition of <span class="inlinecode"><span class="id" title="var">e
 
 
 </div>
-</div> <!-- /quiz -->
 <div class="code">
-<br/>
 <div class="togglescript" id="proofcontrol1" onclick="toggleDisplay('proof1');toggleDisplay('proofcontrol1')"><span class="show"></span></div>
 <div class="proofscript" id="proof1" onclick="toggleDisplay('proof1');toggleDisplay('proofcontrol1')">
 <span class="id" title="keyword">Check</span> (<span class="id" title="keyword">fun</span> (<span class="id" title="var">n</span> : <span class="id" title="var">nat</span>) ⇒<br/>
@@ -329,7 +327,7 @@ Recall the definition of <span class="inlinecode"><span class="id" title="var">e
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">ev_SS</span> (2 + <span class="id" title="var">n</span>) (<span class="id" title="var">ev_SS</span> <span class="id" title="var">n</span> <span class="id" title="var">H</span>))<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="id" title="keyword">∀</span> <span class="id" title="var">n</span> : <span class="id" title="var">nat</span>, <span class="id" title="var">ev</span> <span class="id" title="var">n</span> → <span class="id" title="var">ev</span> (4 + <span class="id" title="var">n</span>).<br/>
 </div>
-</div>
+</div></div> <!-- /quiz -->
 
 <div class="doc">
 <a id="lab342"></a><h1 class="section">Programming with Tactics</h1>
@@ -516,8 +514,8 @@ What is the type of this expression?
 
 
 </div>
-</div> <!-- /quiz -->
-<div class="code"><div class="togglescript" id="proofcontrol2" onclick="toggleDisplay('proof2');toggleDisplay('proofcontrol2')"><span class="show"></span></div>
+<div class="code">
+<div class="togglescript" id="proofcontrol2" onclick="toggleDisplay('proof2');toggleDisplay('proofcontrol2')"><span class="show"></span></div>
 <div class="proofscript" id="proof2" onclick="toggleDisplay('proof2');toggleDisplay('proofcontrol2')">
 <span class="id" title="keyword">Check</span><br/>
 &nbsp;&nbsp;(<span class="id" title="keyword">fun</span> <span class="id" title="var">P</span> <span class="id" title="var">Q</span> <span class="id" title="var">R</span> (<span class="id" title="var">H<sub>1</sub></span>: <span class="id" title="var">and</span> <span class="id" title="var">P</span> <span class="id" title="var">Q</span>) (<span class="id" title="var">H<sub>2</sub></span>: <span class="id" title="var">and</span> <span class="id" title="var">Q</span> <span class="id" title="var">R</span>) ⇒<br/>
@@ -525,7 +523,7 @@ What is the type of this expression?
 &nbsp;&nbsp;&nbsp;&nbsp;| (<span class="id" title="var">conj</span> <span class="id" title="var">HP</span> <span class="id" title="var">_</span>, <span class="id" title="var">conj</span> <span class="id" title="var">_</span> <span class="id" title="var">HR</span>) ⇒ <span class="id" title="var">conj</span> <span class="id" title="var">HP</span> <span class="id" title="var">HR</span><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">end</span>) : <span class="id" title="keyword">∀</span> <span class="id" title="var">P</span> <span class="id" title="var">Q</span> <span class="id" title="var">R</span>, <span class="id" title="var">P</span> ∧ <span class="id" title="var">Q</span> → <span class="id" title="var">Q</span> ∧ <span class="id" title="var">R</span> → <span class="id" title="var">P</span> ∧ <span class="id" title="var">R</span>.<br/>
 </div>
-</div>
+</div></div> <!-- /quiz -->
 
 <div class="doc">
 <a id="lab348"></a><h2 class="section">Disjunction</h2>
@@ -623,8 +621,8 @@ What is the type of this expression?
 
 
 </div>
-</div> <!-- /quiz -->
-<div class="code"><div class="togglescript" id="proofcontrol3" onclick="toggleDisplay('proof3');toggleDisplay('proofcontrol3')"><span class="show"></span></div>
+<div class="code">
+<div class="togglescript" id="proofcontrol3" onclick="toggleDisplay('proof3');toggleDisplay('proofcontrol3')"><span class="show"></span></div>
 <div class="proofscript" id="proof3" onclick="toggleDisplay('proof3');toggleDisplay('proofcontrol3')">
 <span class="id" title="keyword">Check</span> (<span class="id" title="keyword">fun</span> <span class="id" title="var">P</span> <span class="id" title="var">Q</span> <span class="id" title="var">H</span> ⇒<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">match</span> <span class="id" title="var">H</span> <span class="id" title="keyword">with</span><br/>
@@ -632,7 +630,7 @@ What is the type of this expression?
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <span class="id" title="var">or_intror</span> <span class="id" title="var">HQ</span> ⇒ @<span class="id" title="var">or_introl</span> <span class="id" title="var">Q</span> <span class="id" title="var">P</span> <span class="id" title="var">HQ</span><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="keyword">end</span>) : <span class="id" title="keyword">∀</span> <span class="id" title="var">P</span> <span class="id" title="var">Q</span>, <span class="id" title="var">P</span> ∨ <span class="id" title="var">Q</span> → <span class="id" title="var">Q</span> ∨ <span class="id" title="var">P</span>.<br/>
 </div>
-</div>
+</div></div> <!-- /quiz -->
 
 <div class="doc">
 <a id="lab351"></a><h2 class="section">Existential Quantification</h2>
@@ -701,9 +699,7 @@ Which of the following propositions is proved by
 
 
 </div>
-</div> <!-- /quiz -->
 <div class="code">
-<br/>
 <div class="togglescript" id="proofcontrol4" onclick="toggleDisplay('proof4');toggleDisplay('proofcontrol4')"><span class="show"></span></div>
 <div class="proofscript" id="proof4" onclick="toggleDisplay('proof4');toggleDisplay('proofcontrol4')">
 <span class="id" title="keyword">Goal</span> <span class="id" title="keyword">∀</span> <span class="id" title="var">x</span>: <span class="id" title="var">nat</span>, (<span class="id" title="var">x</span>&lt;&gt;0) → (<span class="id" title="tactic">∃</span> <span class="id" title="var">n</span>, <span class="id" title="var">x</span> = <span class="id" title="var">S</span> <span class="id" title="var">n</span>).<br/>
@@ -713,7 +709,7 @@ Which of the following propositions is proved by
 - <span class="id" title="tactic">∃</span> <span class="id" title="var">x'</span>. <span class="id" title="tactic">reflexivity</span>.<br/>
 <span class="id" title="keyword">Qed</span>.<br/>
 </div>
-</div>
+</div></div> <!-- /quiz -->
 
 <div class="doc">
 <a id="lab353"></a><h2 class="section"><span class="inlinecode"><span class="id" title="var">True</span></span> and <span class="inlinecode"><span class="id" title="var">False</span></span></h2>
@@ -887,13 +883,13 @@ Which of the following is a correct proof object for the proposition
 
 
 </div>
-</div> <!-- /quiz -->
-<div class="code"><div class="togglescript" id="proofcontrol5" onclick="toggleDisplay('proof5');toggleDisplay('proofcontrol5')"><span class="show"></span></div>
+<div class="code">
+<div class="togglescript" id="proofcontrol5" onclick="toggleDisplay('proof5');toggleDisplay('proofcontrol5')"><span class="show"></span></div>
 <div class="proofscript" id="proof5" onclick="toggleDisplay('proof5');toggleDisplay('proofcontrol5')">
 <span class="id" title="keyword">Definition</span> <span class="id" title="var">quiz6</span> : <span class="id" title="tactic">∃</span> <span class="id" title="var">x</span>, <span class="id" title="var">x</span> + 3 == 4<br/>
 &nbsp;&nbsp;:= <span class="id" title="var">ex_intro</span> (<span class="id" title="keyword">fun</span> <span class="id" title="var">z</span> ⇒ (<span class="id" title="var">z</span> + 3 == 4)) 1 (<span class="id" title="var">eq_refl</span> 4).<br/>
 </div>
-</div>
+</div></div> <!-- /quiz -->
 
 <div class="doc">
 <a id="lab359"></a><h1 class="section">Coq's Trusted Computing Base</h1>
