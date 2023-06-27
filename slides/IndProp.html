@@ -40,7 +40,7 @@
 
 <div class="paragraph"> </div>
 
- Regular expressions are a simple language for describing sets of
+ Regular expressions are a natural language for describing sets of
     strings.  Their syntax is defined as follows: 
 </div>
 <div class="code">
@@ -55,66 +55,121 @@
 </div>
 
 <div class="doc">
+Note that this definition is <i>polymorphic</i>: Regular
+    expressions in <span class="inlinecode"><span class="id" title="var">reg_exp</span></span> <span class="inlinecode"><span class="id" title="var">T</span></span> describe strings with characters drawn
+    from <span class="inlinecode"><span class="id" title="var">T</span></span> -- which in this exercise we represent as <i>lists</i> with
+    elements from <span class="inlinecode"><span class="id" title="var">T</span></span>. 
+<div class="paragraph"> </div>
+
 <a id="lab292"></a><h3 class="section"> </h3>
- We connect regular expressions and strings via the following
-    rules, which define when a regular expression <i>matches</i> some
-    string:
-
+ We connect regular expressions and strings by defining when
+    a string <span class="inlinecode"><span class="id" title="var">s</span></span> <i>matches</i> a regular expression <span class="inlinecode"><span class="id" title="var">re</span></span>, which we write as
+    <span class="inlinecode"><span class="id" title="var">s</span></span> <span class="inlinecode">=~</span> <span class="inlinecode"><span class="id" title="var">re</span></span>: 
 <div class="paragraph"> </div>
 
-<ul class="doclist">
-<li> The expression <span class="inlinecode"><span class="id" title="var">EmptySet</span></span> does not match any string.
-
-<div class="paragraph"> </div>
-
-
-</li>
-<li> The expression <span class="inlinecode"><span class="id" title="var">EmptyStr</span></span> matches the empty string <span class="inlinecode">[]</span>.
-
-<div class="paragraph"> </div>
-
-
-</li>
-<li> The expression <span class="inlinecode"><span class="id" title="var">Char</span></span> <span class="inlinecode"><span class="id" title="var">x</span></span> matches the one-character string <span class="inlinecode">[<span class="id" title="var">x</span>]</span>.
-
-<div class="paragraph"> </div>
-
-
-</li>
-<li> If <span class="inlinecode"><span class="id" title="var">re<sub>1</sub></span></span> matches <span class="inlinecode"><span class="id" title="var">s<sub>1</sub></span></span>, and <span class="inlinecode"><span class="id" title="var">re<sub>2</sub></span></span> matches <span class="inlinecode"><span class="id" title="var">s<sub>2</sub></span></span>,
-        then <span class="inlinecode"><span class="id" title="var">App</span></span> <span class="inlinecode"><span class="id" title="var">re<sub>1</sub></span></span> <span class="inlinecode"><span class="id" title="var">re<sub>2</sub></span></span> matches <span class="inlinecode"><span class="id" title="var">s<sub>1</sub></span></span> <span class="inlinecode">++</span> <span class="inlinecode"><span class="id" title="var">s<sub>2</sub></span></span>.
-
-<div class="paragraph"> </div>
-
-
-</li>
-<li> If at least one of <span class="inlinecode"><span class="id" title="var">re<sub>1</sub></span></span> and <span class="inlinecode"><span class="id" title="var">re<sub>2</sub></span></span> matches <span class="inlinecode"><span class="id" title="var">s</span></span>,
-        then <span class="inlinecode"><span class="id" title="var">Union</span></span> <span class="inlinecode"><span class="id" title="var">re<sub>1</sub></span></span> <span class="inlinecode"><span class="id" title="var">re<sub>2</sub></span></span> matches <span class="inlinecode"><span class="id" title="var">s</span></span>.
-
-<div class="paragraph"> </div>
-
-
-</li>
-<li> Finally, if we can write some string <span class="inlinecode"><span class="id" title="var">s</span></span> as the concatenation
-        of a sequence of strings <span class="inlinecode"><span class="id" title="var">s</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">s_1</span></span> <span class="inlinecode">++</span> <span class="inlinecode">...</span> <span class="inlinecode">++</span> <span class="inlinecode"><span class="id" title="var">s_k</span></span>, and the
-        expression <span class="inlinecode"><span class="id" title="var">re</span></span> matches each one of the strings <span class="inlinecode"><span class="id" title="var">s_i</span></span>,
-        then <span class="inlinecode"><span class="id" title="var">Star</span></span> <span class="inlinecode"><span class="id" title="var">re</span></span> matches <span class="inlinecode"><span class="id" title="var">s</span></span>.
-
-<div class="paragraph"> </div>
-
-        In particular, the sequence of strings may be empty, so
-        <span class="inlinecode"><span class="id" title="var">Star</span></span> <span class="inlinecode"><span class="id" title="var">re</span></span> always matches the empty string <span class="inlinecode">[]</span> no matter what
-        <span class="inlinecode"><span class="id" title="var">re</span></span> is. 
-</li>
-</ul>
-
+<center><table class="infrule">
+<tr class="infruleassumption">
+  <td class="infrule">&nbsp;&nbsp;</td>
+  <td class="infrulenamecol" rowspan="3">
+    (MEmpty) &nbsp;
+  </td></tr>
+<tr class="infrulemiddle">
+  <td class="infrule"><hr /></td>
+</tr>
+<tr class="infruleassumption">
+  <td class="infrule">[] =~ EmptyStr</td>
+  <td></td>
+</tr>
+</table></center><center><table class="infrule">
+<tr class="infruleassumption">
+  <td class="infrule">&nbsp;&nbsp;</td>
+  <td class="infrulenamecol" rowspan="3">
+    (MChar) &nbsp;
+  </td></tr>
+<tr class="infrulemiddle">
+  <td class="infrule"><hr /></td>
+</tr>
+<tr class="infruleassumption">
+  <td class="infrule">[x] =~ (Char x)</td>
+  <td></td>
+</tr>
+</table></center><center><table class="infrule">
+<tr class="infruleassumption">
+  <td class="infrule">s<sub>1</sub> =~ re<sub>1</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s<sub>2</sub> =~ re<sub>2</sub></td>
+  <td class="infrulenamecol" rowspan="3">
+    (MApp) &nbsp;
+  </td></tr>
+<tr class="infrulemiddle">
+  <td class="infrule"><hr /></td>
+</tr>
+<tr class="infruleassumption">
+  <td class="infrule">(s<sub>1</sub> ++ s<sub>2</sub>) =~ (App re<sub>1</sub> re<sub>2</sub>)</td>
+  <td></td>
+</tr>
+</table></center><center><table class="infrule">
+<tr class="infruleassumption">
+  <td class="infrule">s<sub>1</sub> =~ re<sub>1</sub></td>
+  <td class="infrulenamecol" rowspan="3">
+    (MUnionL) &nbsp;
+  </td></tr>
+<tr class="infrulemiddle">
+  <td class="infrule"><hr /></td>
+</tr>
+<tr class="infruleassumption">
+  <td class="infrule">s<sub>1</sub> =~ (Union re<sub>1</sub> re<sub>2</sub>)</td>
+  <td></td>
+</tr>
+</table></center><center><table class="infrule">
+<tr class="infruleassumption">
+  <td class="infrule">s<sub>2</sub> =~ re<sub>1</sub></td>
+  <td class="infrulenamecol" rowspan="3">
+    (MUnionR) &nbsp;
+  </td></tr>
+<tr class="infrulemiddle">
+  <td class="infrule"><hr /></td>
+</tr>
+<tr class="infruleassumption">
+  <td class="infrule">s<sub>2</sub> =~ (Union re<sub>1</sub> re<sub>2</sub>)</td>
+  <td></td>
+</tr>
+</table></center><center><table class="infrule">
+<tr class="infruleassumption">
+  <td class="infrule">&nbsp;&nbsp;</td>
+  <td class="infrulenamecol" rowspan="3">
+    (MStar0) &nbsp;
+  </td></tr>
+<tr class="infrulemiddle">
+  <td class="infrule"><hr /></td>
+</tr>
+<tr class="infruleassumption">
+  <td class="infrule">[] =~ (Star re)</td>
+  <td></td>
+</tr>
+</table></center><center><table class="infrule">
+<tr class="infruleassumption">
+  <td class="infrule">s<sub>1</sub> =~ re</td>
+  <td></td>
+</tr>
+<tr class="infruleassumption">
+  <td class="infrule">s<sub>2</sub> =~ (Star re)</td>
+  <td class="infrulenamecol" rowspan="3">
+    (MStarApp) &nbsp;
+  </td></tr>
+<tr class="infrulemiddle">
+  <td class="infrule"><hr /></td>
+</tr>
+<tr class="infruleassumption">
+  <td class="infrule">(s<sub>1</sub> ++ s<sub>2</sub>) =~ (Star re)</td>
+  <td></td>
+</tr>
+</table></center>
 <div class="paragraph"> </div>
 
 <a id="lab293"></a><h3 class="section"> </h3>
- We can easily translate this informal definition into an
-    <span class="inlinecode"><span class="id" title="keyword">Inductive</span></span> one as follows.  We use the notation <span class="inlinecode"><span class="id" title="var">s</span></span> <span class="inlinecode">=~</span> <span class="inlinecode"><span class="id" title="var">re</span></span> in
-    place of <span class="inlinecode"><span class="id" title="var">exp_match</span></span> <span class="inlinecode"><span class="id" title="var">s</span></span> <span class="inlinecode"><span class="id" title="var">re</span></span>.  (By "reserving" the notation before
-    defining the <span class="inlinecode"><span class="id" title="keyword">Inductive</span></span>, we can use it in the definition.) 
+ This directly corresponds to the following <span class="inlinecode"><span class="id" title="keyword">Inductive</span></span> definition.
+    We use the notation <span class="inlinecode"><span class="id" title="var">s</span></span> <span class="inlinecode">=~</span> <span class="inlinecode"><span class="id" title="var">re</span></span> in  place of <span class="inlinecode"><span class="id" title="var">exp_match</span></span> <span class="inlinecode"><span class="id" title="var">s</span></span> <span class="inlinecode"><span class="id" title="var">re</span></span>.
+    (By "reserving" the notation before defining the <span class="inlinecode"><span class="id" title="keyword">Inductive</span></span>,
+    we can use it in the definition.) 
 </div>
 <div class="code">
 
@@ -138,45 +193,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" title="var">H<sub>2</sub></span> : <span class="id" title="var">s<sub>2</sub></span> =~ (<span class="id" title="var">Star</span> <span class="id" title="var">re</span>))<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: (<span class="id" title="var">s<sub>1</sub></span> ++ <span class="id" title="var">s<sub>2</sub></span>) =~ (<span class="id" title="var">Star</span> <span class="id" title="var">re</span>)<br/>
 <br/>
-&nbsp;&nbsp;<span class="id" title="keyword">where</span> &quot;s =~ re" := (<span class="id" title="var">exp_match</span> <span class="id" title="var">s</span> <span class="id" title="var">re</span>).<br/><hr class='doublespaceincode'/>
- <!-- /quiz -->
-</div><div class="quiz">
-
-
-<div class="doc">
-Notice that this clause in our informal definition...
-
-<div class="paragraph"> </div>
-
-<ul class="doclist">
-<li> "The expression <span class="inlinecode"><span class="id" title="var">EmptySet</span></span> does not match any string."
-
-</li>
-</ul>
-
-<div class="paragraph"> </div>
-
-    ... is not explicitly reflected in the above definition.  Do we
-    need to add something?
-
-<div class="paragraph"> </div>
-
-   (1) Yes, we should add a rule for this.
-
-<div class="paragraph"> </div>
-
-   (2) No, one of the other rules already covers this case.
-
-<div class="paragraph"> </div>
-
-   (3) No, the <i>lack</i> of a rule actually gives us the behavior we
-       want.
-
-<div class="paragraph"> </div>
-
-
+&nbsp;&nbsp;<span class="id" title="keyword">where</span> &quot;s =~ re" := (<span class="id" title="var">exp_match</span> <span class="id" title="var">s</span> <span class="id" title="var">re</span>).<br/>
 </div>
-</div> <!-- /quiz -->
 
 <div class="doc">
 <a id="lab294"></a><h3 class="section"> </h3>
@@ -228,6 +246,11 @@ Notice that this clause in our informal definition...
 <div class="doc">
 <a id="lab296"></a><h2 class="section">The <span class="inlinecode"><span class="id" title="var">remember</span></span> Tactic</h2>
 
+<div class="paragraph"> </div>
+
+ Since the definition of <span class="inlinecode"><span class="id" title="var">exp_match</span></span> has a recursive
+    structure, we might expect that proofs involving regular
+    expressions will often require induction on evidence. 
 <div class="paragraph"> </div>
 
  One potentially confusing feature of the <span class="inlinecode"><span class="id" title="tactic">induction</span></span> tactic is
