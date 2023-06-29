@@ -121,7 +121,7 @@ Note that this definition is <i>polymorphic</i>: Regular
 </tr>
 </table></center><center><table class="infrule">
 <tr class="infruleassumption">
-  <td class="infrule">s<sub>2</sub> =~ re<sub>1</sub></td>
+  <td class="infrule">s<sub>2</sub> =~ re<sub>2</sub></td>
   <td class="infrulenamecol" rowspan="3">
     (MUnionR) &nbsp;
   </td></tr>
@@ -184,7 +184,7 @@ Note that this definition is <i>polymorphic</i>: Regular
 &nbsp;&nbsp;| <span class="id" title="var">MUnionL</span> <span class="id" title="var">s<sub>1</sub></span> <span class="id" title="var">re<sub>1</sub></span> <span class="id" title="var">re<sub>2</sub></span><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" title="var">H<sub>1</sub></span> : <span class="id" title="var">s<sub>1</sub></span> =~ <span class="id" title="var">re<sub>1</sub></span>)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="id" title="var">s<sub>1</sub></span> =~ (<span class="id" title="var">Union</span> <span class="id" title="var">re<sub>1</sub></span> <span class="id" title="var">re<sub>2</sub></span>)<br/>
-&nbsp;&nbsp;| <span class="id" title="var">MUnionR</span> <span class="id" title="var">re<sub>1</sub></span> <span class="id" title="var">s<sub>2</sub></span> <span class="id" title="var">re<sub>2</sub></span><br/>
+&nbsp;&nbsp;| <span class="id" title="var">MUnionR</span> <span class="id" title="var">s<sub>2</sub></span> <span class="id" title="var">re<sub>1</sub></span> <span class="id" title="var">re<sub>2</sub></span><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="id" title="var">H<sub>2</sub></span> : <span class="id" title="var">s<sub>2</sub></span> =~ <span class="id" title="var">re<sub>2</sub></span>)<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span class="id" title="var">s<sub>2</sub></span> =~ (<span class="id" title="var">Union</span> <span class="id" title="var">re<sub>1</sub></span> <span class="id" title="var">re<sub>2</sub></span>)<br/>
 &nbsp;&nbsp;| <span class="id" title="var">MStar0</span> <span class="id" title="var">re</span> : [] =~ (<span class="id" title="var">Star</span> <span class="id" title="var">re</span>)<br/>
