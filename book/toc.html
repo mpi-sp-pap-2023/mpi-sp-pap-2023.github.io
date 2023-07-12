@@ -739,23 +739,52 @@ $( function() {
 </li>
 </ul>
 </div>
-<h2><a href="ImpParser.html">Lexing and Parsing in Coq &nbsp;&nbsp; (<i>ImpParser</i>)</a></h2>
+<h2><a href="Noninterference.html">Defining Secrecy and Secure Multi-Execution &nbsp;&nbsp; (<i>Noninterference</i>)</a></h2>
 <div>
 <ul class="doclist">
-<li><a href="ImpParser.html#lab429">Internals</a>
-<div>
+<li><div>
 <ul class="doclist">
-<li><a href="ImpParser.html#lab430">Lexical Analysis</a>
+<li><a href="Noninterference.html#lab429">Secure Multi-Execution (SME)</a>
 
 </li>
-<li><a href="ImpParser.html#lab431">Parsing</a>
+<li><a href="Noninterference.html#lab430">State transformers</a>
+
+</li>
+<li><a href="Noninterference.html#lab431">SME with state</a>
+
+</li>
+<li><a href="Noninterference.html#lab432">Noninterference and SME for Imp programs without loops</a>
+
+</li>
+<li><a href="Noninterference.html#lab433">Noninterference and SME for Imp programs with loops</a>
+
+</li>
+<li><a href="Noninterference.html#lab434">Termination-Sensitive Noninterference</a>
 
 </li>
 </ul>
 </div>
 
 </li>
-<li><a href="ImpParser.html#lab435">Examples</a>
+</ul>
+</div>
+<h2><a href="ImpParser.html">Lexing and Parsing in Coq &nbsp;&nbsp; (<i>ImpParser</i>)</a></h2>
+<div>
+<ul class="doclist">
+<li><a href="ImpParser.html#lab435">Internals</a>
+<div>
+<ul class="doclist">
+<li><a href="ImpParser.html#lab436">Lexical Analysis</a>
+
+</li>
+<li><a href="ImpParser.html#lab437">Parsing</a>
+
+</li>
+</ul>
+</div>
+
+</li>
+<li><a href="ImpParser.html#lab441">Examples</a>
 
 </li>
 </ul>
@@ -763,16 +792,16 @@ $( function() {
 <h2><a href="ImpCEvalFun.html">An Evaluation Function for Imp &nbsp;&nbsp; (<i>ImpCEvalFun</i>)</a></h2>
 <div>
 <ul class="doclist">
-<li><a href="ImpCEvalFun.html#lab436">A Broken Evaluator</a>
+<li><a href="ImpCEvalFun.html#lab442">A Broken Evaluator</a>
 
 </li>
-<li><a href="ImpCEvalFun.html#lab437">A Step-Indexed Evaluator</a>
+<li><a href="ImpCEvalFun.html#lab443">A Step-Indexed Evaluator</a>
 
 </li>
-<li><a href="ImpCEvalFun.html#lab440">Relational vs. Step-Indexed Evaluation</a>
+<li><a href="ImpCEvalFun.html#lab446">Relational vs. Step-Indexed Evaluation</a>
 
 </li>
-<li><a href="ImpCEvalFun.html#lab443">Determinism of Evaluation Again</a>
+<li><a href="ImpCEvalFun.html#lab449">Determinism of Evaluation Again</a>
 
 </li>
 </ul>
@@ -780,19 +809,19 @@ $( function() {
 <h2><a href="Extraction.html">Extracting OCaml from Coq &nbsp;&nbsp; (<i>Extraction</i>)</a></h2>
 <div>
 <ul class="doclist">
-<li><a href="Extraction.html#lab444">Basic Extraction</a>
+<li><a href="Extraction.html#lab450">Basic Extraction</a>
 
 </li>
-<li><a href="Extraction.html#lab445">Controlling Extraction of Specific Types</a>
+<li><a href="Extraction.html#lab451">Controlling Extraction of Specific Types</a>
 
 </li>
-<li><a href="Extraction.html#lab446">A Complete Example</a>
+<li><a href="Extraction.html#lab452">A Complete Example</a>
 
 </li>
-<li><a href="Extraction.html#lab447">Discussion</a>
+<li><a href="Extraction.html#lab453">Discussion</a>
 
 </li>
-<li><a href="Extraction.html#lab448">Going Further</a>
+<li><a href="Extraction.html#lab454">Going Further</a>
 
 </li>
 </ul>
@@ -800,16 +829,16 @@ $( function() {
 <h2><a href="Auto.html">More Automation &nbsp;&nbsp; (<i>Auto</i>)</a></h2>
 <div>
 <ul class="doclist">
-<li><a href="Auto.html#lab449">The <span class="inlinecode"><span class="id" title="tactic">auto</span></span> Tactic</a>
+<li><a href="Auto.html#lab455">The <span class="inlinecode"><span class="id" title="tactic">auto</span></span> Tactic</a>
 
 </li>
-<li><a href="Auto.html#lab450">Searching For Hypotheses</a>
+<li><a href="Auto.html#lab456">Searching For Hypotheses</a>
 
 </li>
-<li><a href="Auto.html#lab451">Tactics <span class="inlinecode"><span class="id" title="tactic">eapply</span></span> and <span class="inlinecode"><span class="id" title="tactic">eauto</span></span></a>
+<li><a href="Auto.html#lab457">Tactics <span class="inlinecode"><span class="id" title="tactic">eapply</span></span> and <span class="inlinecode"><span class="id" title="tactic">eauto</span></span></a>
 
 </li>
-<li><a href="Auto.html#lab452">Constraints on Existential Variables</a>
+<li><a href="Auto.html#lab458">Constraints on Existential Variables</a>
 
 </li>
 </ul>
@@ -817,96 +846,96 @@ $( function() {
 <h2><a href="AltAuto.html">A Streamlined Treatment of Automation &nbsp;&nbsp; (<i>AltAuto</i>)</a></h2>
 <div>
 <ul class="doclist">
-<li><a href="AltAuto.html#lab453">Tacticals</a>
+<li><a href="AltAuto.html#lab459">Tacticals</a>
 <div>
 <ul class="doclist">
-<li><a href="AltAuto.html#lab454">The <span class="inlinecode"><span class="id" title="tactic">try</span></span> Tactical</a>
+<li><a href="AltAuto.html#lab460">The <span class="inlinecode"><span class="id" title="tactic">try</span></span> Tactical</a>
 
 </li>
-<li><a href="AltAuto.html#lab455">The Sequence Tactical <span class="inlinecode">;</span> (Simple Form)</a>
+<li><a href="AltAuto.html#lab461">The Sequence Tactical <span class="inlinecode">;</span> (Simple Form)</a>
 
 </li>
-<li><a href="AltAuto.html#lab457">The Sequence Tactical <span class="inlinecode">;</span> (Local Form)</a>
+<li><a href="AltAuto.html#lab463">The Sequence Tactical <span class="inlinecode">;</span> (Local Form)</a>
 
 </li>
-<li><a href="AltAuto.html#lab459">The <span class="inlinecode"><span class="id" title="tactic">repeat</span></span> Tactical</a>
+<li><a href="AltAuto.html#lab465">The <span class="inlinecode"><span class="id" title="tactic">repeat</span></span> Tactical</a>
 
 </li>
-<li><a href="AltAuto.html#lab461">An Optimization Exercise</a>
+<li><a href="AltAuto.html#lab467">An Optimization Exercise</a>
 
 </li>
 </ul>
 </div>
 
 </li>
-<li><a href="AltAuto.html#lab463">Tactics that Make Mentioning Names Unnecessary</a>
+<li><a href="AltAuto.html#lab469">Tactics that Make Mentioning Names Unnecessary</a>
 <div>
 <ul class="doclist">
-<li><a href="AltAuto.html#lab464">The <span class="inlinecode"><span class="id" title="tactic">assumption</span></span> tactic</a>
+<li><a href="AltAuto.html#lab470">The <span class="inlinecode"><span class="id" title="tactic">assumption</span></span> tactic</a>
 
 </li>
-<li><a href="AltAuto.html#lab465">The <span class="inlinecode"><span class="id" title="var">contradiction</span></span> tactic</a>
+<li><a href="AltAuto.html#lab471">The <span class="inlinecode"><span class="id" title="var">contradiction</span></span> tactic</a>
 
 </li>
-<li><a href="AltAuto.html#lab466">The <span class="inlinecode"><span class="id" title="tactic">subst</span></span> tactic</a>
+<li><a href="AltAuto.html#lab472">The <span class="inlinecode"><span class="id" title="tactic">subst</span></span> tactic</a>
 
 </li>
-<li><a href="AltAuto.html#lab467">The <span class="inlinecode"><span class="id" title="tactic">constructor</span></span> tactic</a>
+<li><a href="AltAuto.html#lab473">The <span class="inlinecode"><span class="id" title="tactic">constructor</span></span> tactic</a>
 
 </li>
 </ul>
 </div>
 
 </li>
-<li><a href="AltAuto.html#lab468">Automatic Solvers</a>
+<li><a href="AltAuto.html#lab474">Automatic Solvers</a>
 <div>
 <ul class="doclist">
-<li><a href="AltAuto.html#lab469">Linear Integer Arithmetic: The <span class="inlinecode"><span class="id" title="var">lia</span></span> Tactic</a>
+<li><a href="AltAuto.html#lab475">Linear Integer Arithmetic: The <span class="inlinecode"><span class="id" title="var">lia</span></span> Tactic</a>
 
 </li>
-<li><a href="AltAuto.html#lab470">Equalities: The <span class="inlinecode"><span class="id" title="tactic">congruence</span></span> Tactic</a>
+<li><a href="AltAuto.html#lab476">Equalities: The <span class="inlinecode"><span class="id" title="tactic">congruence</span></span> Tactic</a>
 
 </li>
-<li><a href="AltAuto.html#lab471">Propositions: The <span class="inlinecode"><span class="id" title="tactic">intuition</span></span> Tactic</a>
+<li><a href="AltAuto.html#lab477">Propositions: The <span class="inlinecode"><span class="id" title="tactic">intuition</span></span> Tactic</a>
 
 </li>
-<li><a href="AltAuto.html#lab472">Exercises with Automatic Solvers</a>
+<li><a href="AltAuto.html#lab478">Exercises with Automatic Solvers</a>
 
 </li>
 </ul>
 </div>
 
 </li>
-<li><a href="AltAuto.html#lab474">Search Tactics</a>
+<li><a href="AltAuto.html#lab480">Search Tactics</a>
 <div>
 <ul class="doclist">
-<li><a href="AltAuto.html#lab475">The <span class="inlinecode"><span class="id" title="tactic">auto</span></span> Tactic</a>
+<li><a href="AltAuto.html#lab481">The <span class="inlinecode"><span class="id" title="tactic">auto</span></span> Tactic</a>
 
 </li>
-<li><a href="AltAuto.html#lab479">The <span class="inlinecode"><span class="id" title="tactic">eauto</span></span> variant</a>
+<li><a href="AltAuto.html#lab485">The <span class="inlinecode"><span class="id" title="tactic">eauto</span></span> variant</a>
 
 </li>
 </ul>
 </div>
 
 </li>
-<li><a href="AltAuto.html#lab480">Ltac: The Tactic Language</a>
+<li><a href="AltAuto.html#lab486">Ltac: The Tactic Language</a>
 <div>
 <ul class="doclist">
-<li><a href="AltAuto.html#lab481">Ltac Functions</a>
+<li><a href="AltAuto.html#lab487">Ltac Functions</a>
 
 </li>
-<li><a href="AltAuto.html#lab484">Ltac Pattern Matching</a>
+<li><a href="AltAuto.html#lab490">Ltac Pattern Matching</a>
 
 </li>
-<li><a href="AltAuto.html#lab485">Using <span class="inlinecode"><span class="id" title="keyword">match</span></span> <span class="inlinecode"><span class="id" title="keyword">goal</span></span> to Prove Tautologies</a>
+<li><a href="AltAuto.html#lab491">Using <span class="inlinecode"><span class="id" title="keyword">match</span></span> <span class="inlinecode"><span class="id" title="keyword">goal</span></span> to Prove Tautologies</a>
 
 </li>
 </ul>
 </div>
 
 </li>
-<li><a href="AltAuto.html#lab487">Review</a>
+<li><a href="AltAuto.html#lab493">Review</a>
 
 </li>
 </ul>
@@ -914,13 +943,13 @@ $( function() {
 <h2><a href="Postscript.html">Postscript</a></h2>
 <div>
 <ul class="doclist">
-<li><a href="Postscript.html#lab488">Looking Back</a>
+<li><a href="Postscript.html#lab494">Looking Back</a>
 
 </li>
-<li><a href="Postscript.html#lab489">Looking Forward</a>
+<li><a href="Postscript.html#lab495">Looking Forward</a>
 
 </li>
-<li><a href="Postscript.html#lab490">Resources</a>
+<li><a href="Postscript.html#lab496">Resources</a>
 
 </li>
 </ul>
@@ -928,7 +957,7 @@ $( function() {
 <h2><a href="Bib.html">Bibliography &nbsp;&nbsp; (<i>Bib</i>)</a></h2>
 <div>
 <ul class="doclist">
-<li><a href="Bib.html#lab491">Resources cited in this volume</a>
+<li><a href="Bib.html#lab497">Resources cited in this volume</a>
 
 </li>
 </ul>
