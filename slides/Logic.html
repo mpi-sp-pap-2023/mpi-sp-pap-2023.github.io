@@ -270,9 +270,9 @@ Coq checks the type of the <i>statements</i> of the <span class="inlinecode"><sp
 
 <a id="lab233"></a><h3 class="section"> </h3>
  The reason is that the identifier <span class="inlinecode"><span class="id" title="var">add_comm</span></span> actually refers to a
-    <i>proof object</i>, which represents a logical derivation establishing
+    <i>proof term</i>, which represents a logical derivation establishing
     the truth of the statement <span class="inlinecode"><span class="id" title="keyword">∀</span></span> <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode"><span class="id" title="var">m</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="var">nat</span>,</span> <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">+</span> <span class="inlinecode"><span class="id" title="var">m</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">m</span></span> <span class="inlinecode">+</span> <span class="inlinecode"><span class="id" title="var">n</span></span>.  The
-    type of this object is the proposition that it is a proof of. 
+    type of this term is the proposition that it is a proof of. 
 <div class="paragraph"> </div>
 
 <a id="lab234"></a><h3 class="section"> </h3>
@@ -469,7 +469,7 @@ Suppose we have
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">H<sub>2</sub></span> : <span class="id" title="var">b</span> = 42<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">trans_eq</span> : <span class="id" title="keyword">∀</span> (<span class="id" title="var">X</span> : <span class="id" title="keyword">Type</span>) (<span class="id" title="var">n</span> <span class="id" title="var">m</span> <span class="id" title="var">o</span> : <span class="id" title="var">X</span>),<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">n</span> = <span class="id" title="var">m</span> → <span class="id" title="var">m</span> = <span class="id" title="var">o</span> → <span class="id" title="var">n</span> = <span class="id" title="var">o</span>
-</span>    What is the type of this proof object?
+</span>    What is the type of this proof term?
 <br/>
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">trans_eq</span> <span class="id" title="var">nat</span> <span class="id" title="var">a</span> <span class="id" title="var">b</span> 42 <span class="id" title="var">H<sub>1</sub></span> <span class="id" title="var">H<sub>2</sub></span>
 </span>
@@ -511,7 +511,7 @@ Suppose, again, that we have
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">H<sub>2</sub></span> : <span class="id" title="var">b</span> = 42<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">trans_eq</span> : <span class="id" title="keyword">∀</span> (<span class="id" title="var">X</span> : <span class="id" title="keyword">Type</span>) (<span class="id" title="var">n</span> <span class="id" title="var">m</span> <span class="id" title="var">o</span> : <span class="id" title="var">X</span>),<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">n</span> = <span class="id" title="var">m</span> → <span class="id" title="var">m</span> = <span class="id" title="var">o</span> → <span class="id" title="var">n</span> = <span class="id" title="var">o</span>
-</span>    What is the type of this proof object?
+</span>    What is the type of this proof term?
 <br/>
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">trans_eq</span> <span class="id" title="var">nat</span> <span class="id" title="var">b</span> 42 <span class="id" title="var">a</span> <span class="id" title="var">H<sub>2</sub></span>
 </span>
@@ -553,7 +553,7 @@ Suppose, again, that we have
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">H<sub>2</sub></span> : <span class="id" title="var">b</span> = 42<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">trans_eq</span> : <span class="id" title="keyword">∀</span> (<span class="id" title="var">X</span> : <span class="id" title="keyword">Type</span>) (<span class="id" title="var">n</span> <span class="id" title="var">m</span> <span class="id" title="var">o</span> : <span class="id" title="var">X</span>),<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">n</span> = <span class="id" title="var">m</span> → <span class="id" title="var">m</span> = <span class="id" title="var">o</span> → <span class="id" title="var">n</span> = <span class="id" title="var">o</span>
-</span>    What is the type of this proof object?
+</span>    What is the type of this proof term?
 <br/>
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">trans_eq</span> <span class="id" title="var">_</span> 42 <span class="id" title="var">a</span> <span class="id" title="var">b</span>
 </span>
@@ -595,7 +595,7 @@ Suppose, again, that we have
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">H<sub>2</sub></span> : <span class="id" title="var">b</span> = 42<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">trans_eq</span> : <span class="id" title="keyword">∀</span> (<span class="id" title="var">X</span> : <span class="id" title="keyword">Type</span>) (<span class="id" title="var">n</span> <span class="id" title="var">m</span> <span class="id" title="var">o</span> : <span class="id" title="var">X</span>),<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">n</span> = <span class="id" title="var">m</span> → <span class="id" title="var">m</span> = <span class="id" title="var">o</span> → <span class="id" title="var">n</span> = <span class="id" title="var">o</span>
-</span>    What is the type of this proof object?
+</span>    What is the type of this proof term?
 <br/>
 <span class="inlinecode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">trans_eq</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">_</span> <span class="id" title="var">H<sub>2</sub></span> <span class="id" title="var">H<sub>1</sub></span>
 </span>

@@ -356,7 +356,7 @@ To test your definition, prove the following facts:
     There is a great deal to be said about this, but it is not
     necessary to understand it all, in order to use Coq.  This section
     gives just a taste, while a deeper exploration can be found in the
-    optional chapters <span class="inlinecode"><span class="id" title="var">ProofObjects</span></span> and <span class="inlinecode"><span class="id" title="var">IndPrinciples</span></span>. 
+    optional chapters <span class="inlinecode"><span class="id" title="var">ProofTerms</span></span> and <span class="inlinecode"><span class="id" title="var">IndPrinciples</span></span>. 
 <div class="paragraph"> </div>
 
  We have seen that we can use <span class="inlinecode"><span class="id" title="keyword">Check</span></span> to ask Coq to print the type
@@ -382,9 +382,9 @@ Coq checks the type of the <i>statements</i> of the <span class="inlinecode"><sp
 <div class="paragraph"> </div>
 
  The reason is that the identifier <span class="inlinecode"><span class="id" title="var">add_comm</span></span> actually refers to a
-    <i>proof object</i>, which represents a logical derivation establishing
+    <i>proof term</i>, which represents a logical derivation establishing
     the truth of the statement <span class="inlinecode"><span class="id" title="keyword">∀</span></span> <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode"><span class="id" title="var">m</span></span> <span class="inlinecode">:</span> <span class="inlinecode"><span class="id" title="var">nat</span>,</span> <span class="inlinecode"><span class="id" title="var">n</span></span> <span class="inlinecode">+</span> <span class="inlinecode"><span class="id" title="var">m</span></span> <span class="inlinecode">=</span> <span class="inlinecode"><span class="id" title="var">m</span></span> <span class="inlinecode">+</span> <span class="inlinecode"><span class="id" title="var">n</span></span>.  The
-    type of this object is the proposition that it is a proof of. 
+    type of this term is the proposition that it is a proof of. 
 <div class="paragraph"> </div>
 
  The type of an ordinary function tells us what we can do with it.
@@ -1469,7 +1469,7 @@ It may seem strange that the general excluded middle is not
 
 <div class="code">
 
-<span class="comment">(*&nbsp;2023-07-12&nbsp;19:50&nbsp;*)</span><br/>
+<span class="comment">(*&nbsp;2023-08-16&nbsp;16:28&nbsp;*)</span><br/>
 </div>
 </div>
 

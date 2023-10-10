@@ -816,7 +816,7 @@ The <span class="inlinecode"><span class="id" title="tactic">eauto</span></span>
  In order for <span class="inlinecode"><span class="id" title="keyword">Qed</span></span> to succeed, all existential variables need to
     be determined by the end of the proof. Otherwise Coq
     will (rightly) refuse to accept the proof. Remember that the Coq
-    tactics build proof objects, and proof objects containing
+    tactics build proof terms, and proof terms containing
     existential variables are not complete. 
 </div>
 <div class="code">
@@ -915,7 +915,7 @@ The <span class="inlinecode"><span class="id" title="tactic">eauto</span></span>
 <span class="id" title="keyword">Proof</span>.<br/>
 &nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">P</span> <span class="id" title="var">Q</span> <span class="id" title="var">HP</span> <span class="id" title="var">HQ</span>. <span class="id" title="tactic">destruct</span> <span class="id" title="var">HP</span> <span class="id" title="keyword">as</span> [<span class="id" title="var">y</span> <span class="id" title="var">HP'</span>]. <span class="id" title="tactic">eauto</span>.<br/>
 <span class="id" title="keyword">Qed</span>.<br/><hr class='doublespaceincode'/>
-<span class="comment">(*&nbsp;2023-07-12&nbsp;19:50&nbsp;*)</span><br/>
+<span class="comment">(*&nbsp;2023-08-16&nbsp;16:28&nbsp;*)</span><br/>
 </div>
 </div>
 
