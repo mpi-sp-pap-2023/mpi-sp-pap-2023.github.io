@@ -413,21 +413,25 @@ Note that the induction hypothesis <span class="inlinecode"><span class="id" tit
 <div class="paragraph"> </div>
 
  We've seen that we often need to relate boolean
-    computations to statements in <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>.  However, this can
-    result in some tedium in proof scripts.
+    computations to statements in <span class="inlinecode"><span class="id" title="keyword">Prop</span></span>: 
+</div>
+<div class="code">
 
-<div class="paragraph"> </div>
+<span class="id" title="keyword">Check</span> <span class="id" title="var">eqb_eq</span> : <span class="id" title="keyword">∀</span> <span class="id" title="var">n<sub>1</sub></span> <span class="id" title="var">n<sub>2</sub></span>, (<span class="id" title="var">n<sub>1</sub></span> =? <span class="id" title="var">n<sub>2</sub></span>) = <span class="id" title="var">true</span> ↔ <span class="id" title="var">n<sub>1</sub></span> = <span class="id" title="var">n<sub>2</sub></span>.<br/>
+</div>
 
-    Consider: 
+<div class="doc">
+However, this can result in some tedium in proof scripts. Consider: 
 </div>
 <div class="code">
 
 <span class="id" title="keyword">Theorem</span> <span class="id" title="var">filter_not_empty_In</span> : <span class="id" title="keyword">∀</span> <span class="id" title="var">n</span> <span class="id" title="var">l</span>,<br/>
-&nbsp;&nbsp;<span class="id" title="var">filter</span> (<span class="id" title="keyword">fun</span> <span class="id" title="var">x</span> ⇒ <span class="id" title="var">n</span> =? <span class="id" title="var">x</span>) <span class="id" title="var">l</span> ≠ [] →<br/>
-&nbsp;&nbsp;<span class="id" title="var">In</span> <span class="id" title="var">n</span> <span class="id" title="var">l</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="var">filter</span> (<span class="id" title="keyword">fun</span> <span class="id" title="var">x</span> ⇒ <span class="id" title="var">n</span> =? <span class="id" title="var">x</span>) <span class="id" title="var">l</span> ≠ [] → <span class="id" title="var">In</span> <span class="id" title="var">n</span> <span class="id" title="var">l</span>.<br/>
+<div class="togglescript" id="proofcontrol4" onclick="toggleDisplay('proof4');toggleDisplay('proofcontrol4')"><span class="show"></span></div>
+<div class="proofscript" id="proof4" onclick="toggleDisplay('proof4');toggleDisplay('proofcontrol4')">
 <span class="id" title="keyword">Proof</span>.<br/>
 &nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">n</span> <span class="id" title="var">l</span>. <span class="id" title="tactic">induction</span> <span class="id" title="var">l</span> <span class="id" title="keyword">as</span> [|<span class="id" title="var">m</span> <span class="id" title="var">l'</span> <span class="id" title="var">IHl'</span>].<br/>
-&nbsp;&nbsp;- <span class="comment">(*&nbsp;l&nbsp;=&nbsp;<span class="inlinecode"></span>&nbsp;*)</span><br/>
+&nbsp;&nbsp;- <span class="comment">(*&nbsp;l&nbsp;=&nbsp;nil&nbsp;*)</span><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">simpl</span>. <span class="id" title="tactic">intros</span> <span class="id" title="var">H</span>. <span class="id" title="tactic">apply</span> <span class="id" title="var">H</span>. <span class="id" title="tactic">reflexivity</span>.<br/>
 &nbsp;&nbsp;- <span class="comment">(*&nbsp;l&nbsp;=&nbsp;m&nbsp;::&nbsp;l'&nbsp;*)</span><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">simpl</span>. <span class="id" title="tactic">destruct</span> (<span class="id" title="var">n</span> =? <span class="id" title="var">m</span>) <span class="id" title="var">eqn</span>:<span class="id" title="var">H</span>.<br/>
@@ -437,6 +441,7 @@ Note that the induction hypothesis <span class="inlinecode"><span class="id" tit
 &nbsp;&nbsp;&nbsp;&nbsp;+ <span class="comment">(*&nbsp;n&nbsp;=?&nbsp;m&nbsp;=&nbsp;false&nbsp;*)</span><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">H'</span>. <span class="id" title="tactic">right</span>. <span class="id" title="tactic">apply</span> <span class="id" title="var">IHl'</span>. <span class="id" title="tactic">apply</span> <span class="id" title="var">H'</span>.<br/>
 <span class="id" title="keyword">Qed</span>.<br/>
+</div>
 </div>
 
 <div class="doc">
